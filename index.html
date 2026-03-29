@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>جمعية شباب المنزه | Menzah Youth Association</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cairo:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #B8192B;
+    --crimson-deep: #7A0F1C;
+    --crimson-light: #F5E8EA;
+    --forest: #1C4A2E;
+    --forest-light: #E8F0EB;
+    --gold: #C9A84C;
+    --gold-light: #F7F0E1;
+    --ink: #12100E;
+    --charcoal: #2D2926;
+    --warm-gray: #6B645E;
+    --parchment: #FAF8F5;
+    --white: #FFFFFF;
+    --border: rgba(18,16,14,0.1);
+    --border-strong: rgba(18,16,14,0.2);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ─── CUSTOM CURSOR ─── */
+  .cursor-dot {
+    width: 8px; height: 8px;
+    background: var(--crimson);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transition: transform 0.1s;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    width: 32px; height: 32px;
+    border: 1.5px solid var(--crimson);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
+    transform: translate(-50%, -50%);
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--parchment); }
+  ::-webkit-scrollbar-thumb { background: var(--crimson); border-radius: 2px; }
+
+  /* ─── LOADING SCREEN ─── */
+  #loader {
+    position: fixed; inset: 0;
+    background: var(--ink);
+    z-index: 10000;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 24px;
+    transition: opacity 0.8s ease, visibility 0.8s;
+  }
+  #loader.hidden { opacity: 0; visibility: hidden; }
+  .loader-logo { width: 80px; opacity: 0; animation: fadeUp 0.8s 0.3s forwards; }
+  .loader-text { color: var(--white); font-family: 'Playfair Display', serif; font-size: 14px; letter-spacing: 6px; opacity: 0; animation: fadeUp 0.8s 0.6s forwards; text-transform: uppercase; }
+  .loader-bar { width: 160px; height: 1px; background: rgba(255,255,255,0.1); position: relative; overflow: hidden; }
+  .loader-bar::after { content: ''; position: absolute; left: -100%; top: 0; width: 100%; height: 100%; background: var(--crimson); animation: loadBar 1.5s 0.5s ease forwards; }
+
+  @keyframes loadBar { to { left: 0; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+  /* ─── NAVIGATION ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 48px;
+    height: 76px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(250,248,245,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 40px rgba(18,16,14,0.08); }
+
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-brand img { height: 44px; object-fit: contain; }
+  .nav-brand-text { display: flex; flex-direction: column; }
+  .nav-brand-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--ink); line-height: 1.2; }
+  .nav-brand-sub { font-size: 10px; color: var(--warm-gray); letter-spacing: 2px; text-transform: uppercase; font-weight: 300; }
+
+  .nav-links { display: flex; gap: 2px; align-items: center; }
+  .nav-links a {
+    padding: 8px 16px; font-size: 13px; font-weight: 600; color: var(--charcoal);
+    text-decoration: none; border-radius: 6px; transition: all 0.2s; cursor: pointer;
+    letter-spacing: 0.3px;
+  }
+  .nav-links a:hover { color: var(--crimson); background: var(--crimson-light); }
+  .nav-links a.active { color: var(--crimson); }
+
+  .nav-cta {
+    background: var(--crimson); color: var(--white) !important;
+    padding: 9px 20px !important; border-radius: 6px !important;
+    letter-spacing: 0.5px;
+  }
+  .nav-cta:hover { background: var(--crimson-deep) !important; color: var(--white) !important; }
+
+  .lang-switcher { display: flex; gap: 2px; border: 1px solid var(--border-strong); border-radius: 6px; overflow: hidden; }
+  .lang-btn { padding: 6px 10px; font-size: 11px; font-weight: 700; background: transparent; border: none; cursor: pointer; color: var(--warm-gray); font-family: 'Cairo', sans-serif; transition: all 0.2s; letter-spacing: 0.5px; }
+  .lang-btn.active { background: var(--ink); color: var(--white); }
+
+  .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+  .mobile-menu-btn span { display: block; width: 24px; height: 1.5px; background: var(--ink); transition: all 0.3s; }
+
+  /* ─── PAGES ─── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--ink);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center;
+    padding-top: 76px;
+  }
+
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.02) 79px, rgba(255,255,255,0.02) 80px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.02) 79px, rgba(255,255,255,0.02) 80px);
+  }
+
+  .hero-accent {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,25,43,0.15) 0%, transparent 70%);
+    top: -100px; right: -100px;
+  }
+  .hero-accent-2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(28,74,46,0.2) 0%, transparent 70%);
+    bottom: -50px; left: 10%;
+  }
+
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto; padding: 80px 48px;
+    display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: center;
+    position: relative; z-index: 1; width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px; opacity: 0;
+    animation: fadeUp 0.8s 2s forwards;
+  }
+  .hero-eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+  .hero-eyebrow-text { font-size: 11px; color: var(--gold); letter-spacing: 4px; text-transform: uppercase; font-weight: 600; }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 62px; font-weight: 900; line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 12px;
+    opacity: 0; animation: fadeUp 0.8s 2.1s forwards;
+  }
+  .hero-title-ar { font-size: 44px; color: rgba(255,255,255,0.5); font-weight: 400; display: block; font-family: 'Cairo', sans-serif; margin-top: 8px; }
+  .hero-title em { color: var(--crimson); font-style: italic; }
+
+  .hero-desc {
+    font-size: 16px; line-height: 1.9; color: rgba(255,255,255,0.55);
+    max-width: 500px; margin-bottom: 40px;
+    opacity: 0; animation: fadeUp 0.8s 2.3s forwards;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; align-items: center;
+    opacity: 0; animation: fadeUp 0.8s 2.5s forwards;
+  }
+  .btn-hero-primary {
+    background: var(--crimson); color: var(--white);
+    padding: 15px 32px; border-radius: 6px; font-size: 14px; font-weight: 700;
+    text-decoration: none; border: none; cursor: pointer; font-family: 'Cairo', sans-serif;
+    letter-spacing: 0.5px; transition: all 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .btn-hero-primary::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.1); opacity: 0; transition: opacity 0.3s; }
+  .btn-hero-primary:hover::after { opacity: 1; }
+  .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(184,25,43,0.4); }
+
+  .btn-hero-ghost {
+    color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 600;
+    text-decoration: none; border: none; cursor: pointer; font-family: 'Cairo', sans-serif;
+    display: flex; align-items: center; gap: 8px; transition: color 0.2s; background: transparent;
+  }
+  .btn-hero-ghost:hover { color: var(--white); }
+  .btn-hero-ghost svg { transition: transform 0.3s; }
+  .btn-hero-ghost:hover svg { transform: translateX(-4px); }
+
+  .hero-visual {
+    opacity: 0; animation: fadeUp 0.8s 2.2s forwards;
+    position: relative;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold));
+  }
+  .hero-logo-big {
+    width: 120px; display: block; margin: 0 auto 28px;
+    filter: drop-shadow(0 0 30px rgba(184,25,43,0.3));
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px; padding: 16px; text-align: center;
+  }
+  .hero-stat-num { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--white); font-weight: 700; display: block; }
+  .hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 4px; display: block; }
+
+  .hero-scroll {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    opacity: 0; animation: fadeUp 0.8s 2.8s forwards;
+  }
+  .hero-scroll span { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 3px; text-transform: uppercase; }
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(180deg, rgba(255,255,255,0.3), transparent); animation: scrollPulse 2s infinite; }
+  @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 100px 48px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-header { margin-bottom: 64px; }
+  .section-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .section-eyebrow-line { width: 30px; height: 1px; background: var(--crimson); }
+  .section-eyebrow-text { font-size: 11px; color: var(--crimson); letter-spacing: 4px; text-transform: uppercase; font-weight: 700; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 700; color: var(--ink); line-height: 1.2; }
+  .section-title em { color: var(--crimson); font-style: italic; }
+  .section-subtitle { font-size: 15px; color: var(--warm-gray); line-height: 1.8; max-width: 560px; margin-top: 12px; font-weight: 300; }
+
+  /* ─── ABOUT ─── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .about-body p { font-size: 15px; line-height: 1.9; color: var(--charcoal); margin-bottom: 20px; font-weight: 300; }
+  .about-body strong { font-weight: 700; color: var(--ink); }
+
+  .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+  .pillar {
+    padding: 20px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--white); transition: all 0.3s;
+    border-top: 3px solid transparent;
+  }
+  .pillar:hover { border-top-color: var(--crimson); box-shadow: 0 8px 30px rgba(18,16,14,0.06); transform: translateY(-3px); }
+  .pillar-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+  .pillar-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .pillar-desc { font-size: 12px; color: var(--warm-gray); line-height: 1.6; }
+
+  .about-visual-panel {
+    background: var(--ink); border-radius: 16px; padding: 48px;
+    position: relative; overflow: hidden;
+  }
+  .about-visual-panel::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold), var(--forest));
+  }
+  .about-location { margin-bottom: 32px; }
+  .about-location-label { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+  .about-location-value { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--white); font-weight: 700; }
+  .about-location-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+  .about-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 32px 0; }
+
+  .about-disciplines { display: flex; flex-direction: column; gap: 12px; }
+  .discipline { display: flex; align-items: center; gap: 12px; }
+  .discipline-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--crimson); flex-shrink: 0; }
+  .discipline-name { font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 300; }
+
+  /* ─── ACTIVITIES / PROGRAMS ─── */
+  .programs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .program-card {
+    border-radius: 14px; border: 1px solid var(--border);
+    background: var(--white); overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+  }
+  .program-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--crimson); transform: scaleX(0); transform-origin: right;
+    transition: transform 0.4s ease;
+  }
+  .program-card:hover::before { transform: scaleX(1); transform-origin: left; }
+  .program-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(18,16,14,0.1); }
+
+  .program-header { padding: 28px 28px 20px; border-bottom: 1px solid var(--border); }
+  .program-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 16px;
+  }
+  .prog-martial { background: #FEF0F0; }
+  .prog-culture { background: var(--forest-light); }
+  .prog-tech { background: #EFF3FF; }
+  .prog-fitness { background: var(--gold-light); }
+  .prog-support { background: #F0F7FF; }
+  .prog-fun { background: #FFF0F8; }
+
+  .program-title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 6px; font-family: 'Playfair Display', serif; }
+  .program-subtitle { font-size: 12px; color: var(--crimson); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+  .program-body { padding: 20px 28px 28px; }
+  .program-desc { font-size: 13px; color: var(--warm-gray); line-height: 1.7; margin-bottom: 16px; font-weight: 300; }
+  .program-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .program-tag { background: var(--parchment); border: 1px solid var(--border); color: var(--charcoal); padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+
+  /* ─── SCHEDULE ─── */
+  .schedule-section { background: var(--ink); }
+  .schedule-section .section-title { color: var(--white); }
+  .schedule-section .section-eyebrow-line { background: var(--gold); }
+  .schedule-section .section-eyebrow-text { color: var(--gold); }
+  .schedule-section .section-subtitle { color: rgba(255,255,255,0.45); }
+
+  .schedule-filter { display: flex; gap: 8px; margin-bottom: 36px; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 8px 20px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.15);
+    background: transparent; color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 600;
+    cursor: pointer; font-family: 'Cairo', sans-serif; transition: all 0.3s; letter-spacing: 0.5px;
+  }
+  .filter-btn.active, .filter-btn:hover { background: var(--crimson); border-color: var(--crimson); color: var(--white); }
+
+  .schedule-table { width: 100%; border-collapse: collapse; }
+  .schedule-table th {
+    padding: 12px 16px; font-size: 11px; color: rgba(255,255,255,0.35);
+    font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,255,255,0.06); text-align: right;
+  }
+  .schedule-table td {
+    padding: 14px 16px; font-size: 13px; color: rgba(255,255,255,0.65);
+    border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: middle;
+  }
+  .schedule-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .sch-badge {
+    display: inline-block; padding: 4px 10px; border-radius: 4px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+  }
+  .sch-martial { background: rgba(184,25,43,0.2); color: #F5A0A8; }
+  .sch-culture { background: rgba(28,74,46,0.25); color: #7EC89A; }
+  .sch-tech { background: rgba(59,91,219,0.2); color: #93AAFF; }
+  .sch-fitness { background: rgba(201,168,76,0.2); color: #E5C878; }
+  .sch-support { background: rgba(100,100,200,0.2); color: #B0BAFF; }
+  .sch-time { color: rgba(255,255,255,0.35); font-size: 12px; }
+  .sch-day { color: var(--white); font-weight: 600; font-size: 13px; }
+  .sch-hidden { display: none; }
+
+  /* ─── TEAM ─── */
+  .team-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+  .team-card {
+    border-radius: 14px; border: 1px solid var(--border);
+    background: var(--white); padding: 28px 20px;
+    text-align: center; transition: all 0.3s;
+  }
+  .team-card:hover { box-shadow: 0 16px 50px rgba(18,16,14,0.08); transform: translateY(-4px); }
+  .team-avatar-wrap { position: relative; margin: 0 auto 20px; width: 80px; height: 80px; }
+  .team-avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700;
+    color: var(--white);
+  }
+  .av1 { background: linear-gradient(135deg, var(--crimson), var(--crimson-deep)); }
+  .av2 { background: linear-gradient(135deg, var(--forest), #0D3320); }
+  .av3 { background: linear-gradient(135deg, #1B4F8A, #0D2F55); }
+  .av4 { background: linear-gradient(135deg, #7B4A00, #4A2C00); }
+  .team-badge {
+    position: absolute; bottom: 0; right: 0;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--crimson); border: 2px solid var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+  }
+  .team-name { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .team-role { font-size: 11px; color: var(--crimson); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .team-bio { font-size: 12px; color: var(--warm-gray); line-height: 1.7; font-weight: 300; }
+
+  /* ─── REGISTRATION ─── */
+  .registration-section { background: var(--crimson-light); }
+  .registration-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .registration-intro h2 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--ink); margin-bottom: 16px; line-height: 1.2; }
+  .registration-intro h2 em { color: var(--crimson); }
+  .registration-intro p { font-size: 15px; color: var(--warm-gray); line-height: 1.8; margin-bottom: 28px; font-weight: 300; }
+
+  .reg-benefits { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .reg-benefits li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--charcoal); }
+  .reg-benefit-check {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--crimson); color: var(--white);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-size: 11px; margin-top: 1px;
+  }
+
+  .reg-form {
+    background: var(--white); border-radius: 16px; padding: 40px;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 80px rgba(184,25,43,0.08);
+  }
+  .reg-form h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--ink); margin-bottom: 28px; }
+
+  .form-group { margin-bottom: 20px; }
+  .form-label { display: block; font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .form-input {
+    width: 100%; padding: 13px 16px; border: 1.5px solid var(--border-strong);
+    border-radius: 8px; font-size: 14px; font-family: 'Cairo', sans-serif;
+    background: var(--parchment); color: var(--ink); transition: all 0.2s;
+  }
+  .form-input:focus { outline: none; border-color: var(--crimson); background: var(--white); box-shadow: 0 0 0 4px rgba(184,25,43,0.08); }
+  .form-select { appearance: none; cursor: pointer; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .sport-checkboxes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .sport-check-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1.5px solid var(--border-strong); border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+  .sport-check-item:hover { border-color: var(--crimson); background: var(--crimson-light); }
+  .sport-check-item input[type="checkbox"] { accent-color: var(--crimson); width: 14px; height: 14px; }
+  .sport-check-item label { font-size: 12px; font-weight: 600; color: var(--charcoal); cursor: pointer; }
+
+  .btn-submit {
+    width: 100%; padding: 15px; background: var(--crimson); color: var(--white);
+    border: none; border-radius: 8px; font-size: 15px; font-weight: 700;
+    font-family: 'Cairo', sans-serif; cursor: pointer; transition: all 0.3s;
+    margin-top: 8px; letter-spacing: 0.5px;
+  }
+  .btn-submit:hover { background: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(184,25,43,0.3); }
+
+  .form-success { display: none; text-align: center; padding: 40px 20px; }
+  .form-success .success-icon { font-size: 48px; margin-bottom: 16px; display: block; }
+  .form-success h4 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--ink); margin-bottom: 8px; }
+  .form-success p { font-size: 14px; color: var(--warm-gray); }
+
+  /* ─── CONTACT ─── */
+  .contact-section { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-details { display: flex; flex-direction: column; gap: 24px; }
+  .contact-detail { display: flex; gap: 20px; align-items: flex-start; }
+  .contact-detail-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--parchment); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .contact-detail-content h4 { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+  .contact-detail-content p { font-size: 14px; color: var(--warm-gray); line-height: 1.6; font-weight: 300; }
+
+  .whatsapp-btn {
+    display: flex; align-items: center; gap: 14px;
+    background: #25D366; color: var(--white);
+    padding: 16px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 15px; font-weight: 700;
+    font-family: 'Cairo', sans-serif; transition: all 0.3s;
+    margin-top: 8px; border: none; cursor: pointer; width: 100%;
+    justify-content: center;
+  }
+  .whatsapp-btn:hover { background: #20BD5C; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(37,211,102,0.3); }
+  .whatsapp-icon { width: 28px; height: 28px; }
+
+  .contact-map-placeholder {
+    background: var(--parchment); border: 1px solid var(--border);
+    border-radius: 14px; height: 280px; display: flex; align-items: center;
+    justify-content: center; flex-direction: column; gap: 12px;
+    margin-top: 24px; color: var(--warm-gray);
+  }
+  .contact-map-placeholder span { font-size: 36px; }
+  .contact-map-placeholder p { font-size: 14px; color: var(--warm-gray); text-align: center; line-height: 1.6; }
+
+  .contact-form-card { background: var(--parchment); border-radius: 16px; padding: 40px; border: 1px solid var(--border); }
+  .contact-form-card h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--ink); margin-bottom: 28px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.5);
+    padding: 60px 48px 28px;
+  }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+  .footer-brand img { height: 44px; filter: brightness(0) invert(1); opacity: 0.6; margin-bottom: 16px; }
+  .footer-brand p { font-size: 13px; line-height: 1.8; font-weight: 300; max-width: 240px; }
+  .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--white); margin-bottom: 8px; }
+  .footer-col h4 { font-size: 11px; color: var(--white); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 20px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; cursor: pointer; transition: color 0.2s; font-weight: 300; }
+  .footer-col ul li a:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-bottom p { font-size: 12px; font-weight: 300; }
+  .footer-gold { color: var(--gold); }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 960px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: flex; }
+    section { padding: 70px 24px; }
+    .hero-inner { grid-template-columns: 1fr; padding: 60px 24px; }
+    .hero-visual { display: none; }
+    .hero-title { font-size: 40px; }
+    .about-grid, .registration-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .programs-grid { grid-template-columns: 1fr 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    footer { padding: 48px 24px 28px; }
+  }
+
+  @media (max-width: 600px) {
+    .programs-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 32px; }
+    .section-title { font-size: 32px; }
+    .form-row { grid-template-columns: 1fr; }
+    .sport-checkboxes { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  /* ─── MOBILE MENU ─── */
+  .mobile-nav {
+    position: fixed; top: 76px; left: 0; right: 0; bottom: 0;
+    background: var(--parchment); z-index: 999;
+    display: none; flex-direction: column;
+    padding: 32px 24px; gap: 4px;
+    border-top: 1px solid var(--border);
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav a {
+    padding: 14px 16px; font-size: 16px; font-weight: 600; color: var(--charcoal);
+    text-decoration: none; border-radius: 8px; cursor: pointer; transition: all 0.2s;
+    display: block;
+  }
+  .mobile-nav a:hover { background: var(--crimson-light); color: var(--crimson); }
+
+  /* ─── ANIMATIONS ─── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <img class="loader-logo" src="Menzeh_new_2.png" alt="Logo" onerror="this.style.display='none'">
+  <div class="loader-text">Menzah Youth Association</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+  <a class="nav-brand" onclick="showPage('home')">
+    <img src="Menzeh_new_2.png" alt="Menzah" onerror="this.style.display='none'">
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Menzah</span>
+      <span class="nav-brand-sub">Youth Association</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a onclick="showPage('home')" class="active" id="nl-home">الرئيسية</a>
+    <a onclick="showPage('about')" id="nl-about">عن الجمعية</a>
+    <a onclick="showPage('programs')" id="nl-programs">البرامج</a>
+    <a onclick="showPage('schedule')" id="nl-schedule">البرنامج الأسبوعي</a>
+    <a onclick="showPage('team')" id="nl-team">الفريق</a>
+    <a onclick="showPage('contact')" id="nl-contact">تواصل</a>
+    <a onclick="showPage('register')" class="nav-cta" id="nl-register">انخرط الآن</a>
+  </div>
+  <div style="display:flex;gap:12px;align-items:center">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('ar')">ع</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <div class="mobile-menu-btn" id="menu-btn" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <a onclick="showPage('home');toggleMobile()" id="mn-home">الرئيسية</a>
+  <a onclick="showPage('about');toggleMobile()" id="mn-about">عن الجمعية</a>
+  <a onclick="showPage('programs');toggleMobile()" id="mn-programs">البرامج</a>
+  <a onclick="showPage('schedule');toggleMobile()" id="mn-schedule">البرنامج الأسبوعي</a>
+  <a onclick="showPage('team');toggleMobile()" id="mn-team">الفريق</a>
+  <a onclick="showPage('contact');toggleMobile()" id="mn-contact">تواصل</a>
+  <a onclick="showPage('register');toggleMobile()" style="background:var(--crimson);color:#fff;margin-top:8px" id="mn-register">انخرط الآن</a>
+</div>
+
+<!-- ═══════════════ PAGE: HOME ═══════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-accent"></div>
+    <div class="hero-accent-2"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span class="hero-eyebrow-text" id="h-eyebrow">رياضة · ثقافة · تكنولوجيا</span>
+        </div>
+        <h1 class="hero-title">
+          <em>Menzah</em><br>
+          <span class="hero-title-ar" id="h-title-ar">جمعية شباب المنزه</span>
+        </h1>
+        <p class="hero-desc" id="h-desc">نرسم مستقبل الشباب بالرياضة والثقافة والتكنولوجيا. جمعية تؤمن بأن كل شاب يستحق فضاءً يُعبّر فيه عن طاقته ويبني قدراته.</p>
+        <div class="hero-actions">
+          <button class="btn-hero-primary" onclick="showPage('register')" id="h-btn1">انخرط الآن</button>
+          <button class="btn-hero-ghost" onclick="showPage('programs')" id="h-btn2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3L13 8L8 13M3 8H13" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="h-btn2-text">اكتشف برامجنا</span>
+          </button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <img class="hero-logo-big" src="Menzeh_new_2.png" alt="Menzah" onerror="this.style.display='none'">
+          <div class="hero-stats">
+            <div class="hero-stat"><span class="hero-stat-num">+500</span><span class="hero-stat-label" id="hs1">عضو نشيط</span></div>
+            <div class="hero-stat"><span class="hero-stat-num">6+</span><span class="hero-stat-label" id="hs2">تخصصات</span></div>
+            <div class="hero-stat"><span class="hero-stat-num">25</span><span class="hero-stat-label" id="hs3">سنة خبرة</span></div>
+            <div class="hero-stat"><span class="hero-stat-num">12</span><span class="hero-stat-label" id="hs4">نشاط/أسبوع</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span id="scroll-label">اكتشف</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+
+  <!-- Quick Programs on Home -->
+  <section style="background:var(--white)">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text" id="qp-eyebrow">برامجنا</span></div>
+        <h2 class="section-title" id="qp-title">ما نقدمه لشبابنا</h2>
+        <p class="section-subtitle" id="qp-sub">من الفنون القتالية إلى الروبوتيك، نوفر بيئة متكاملة لتطوير الشباب.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-header">
+            <div class="program-icon prog-martial">🥋</div>
+            <div class="program-title" id="pc1-t">الفنون القتالية</div>
+            <div class="program-subtitle" id="pc1-s">MARTIAL ARTS</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc" id="pc1-d">كراطي، تايكواندو، وMMA — برامج احترافية لكل المستويات تحت إشراف مدربين معتمدين.</p>
+            <div class="program-tags"><span class="program-tag">كراطي</span><span class="program-tag">تايكواندو</span><span class="program-tag">MMA</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-2">
+          <div class="program-header">
+            <div class="program-icon prog-fitness">💪</div>
+            <div class="program-title" id="pc2-t">كارديو للنساء</div>
+            <div class="program-subtitle" id="pc2-s">LADIES FITNESS</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc" id="pc2-d">فضاء خاص للسيدات: برامج لياقة بدنية متنوعة في أجواء مريحة وآمنة.</p>
+            <div class="program-tags"><span class="program-tag">كارديو</span><span class="program-tag">لياقة</span><span class="program-tag">سيدات</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-3">
+          <div class="program-header">
+            <div class="program-icon prog-tech">🤖</div>
+            <div class="program-title" id="pc3-t">روبوتيك وإعلاميات</div>
+            <div class="program-subtitle" id="pc3-s">ROBOTICS & IT</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc" id="pc3-d">دروس برمجة وروبوتيك لإعداد جيل متمكن من التكنولوجيا ومستعد لمستقبل رقمي.</p>
+            <div class="program-tags"><span class="program-tag">روبوتيك</span><span class="program-tag">برمجة</span><span class="program-tag">إعلاميات</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-header">
+            <div class="program-icon prog-support">📖</div>
+            <div class="program-title" id="pc4-t">دروس الدعم</div>
+            <div class="program-subtitle" id="pc4-s">LANGUAGE SUPPORT</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc" id="pc4-d">دعم مدرسي في اللغات لمساعدة الأطفال والشباب على التفوق الدراسي.</p>
+            <div class="program-tags"><span class="program-tag">عربية</span><span class="program-tag">فرنسية</span><span class="program-tag">إنجليزية</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-2">
+          <div class="program-header">
+            <div class="program-icon prog-culture">🎭</div>
+            <div class="program-title" id="pc5-t">الثقافة والفنون</div>
+            <div class="program-subtitle" id="pc5-s">CULTURE & ARTS</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc" id="pc5-d">مسرح، موسيقى، وفنون تشكيلية — فضاء إبداعي لاكتشاف وتطوير المواهب الفنية.</p>
+            <div class="program-tags"><span class="program-tag">مسرح</span><span class="program-tag">موسيقى</span><span class="program-tag">فنون</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-3">
+          <div class="program-header">
+            <div class="program-icon prog-fun">🎉</div>
+            <div class="program-title" id="pc6-t">أنشطة ترفيهية</div>
+            <div class="program-subtitle" id="pc6-s">RECREATIONAL</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc" id="pc6-d">رحلات، ألعاب جماعية، ومهرجانات موسمية لتقوية الروابط الاجتماعية والانتماء.</p>
+            <div class="program-tags"><span class="program-tag">رحلات</span><span class="program-tag">ألعاب</span><span class="program-tag">مهرجانات</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ PAGE: ABOUT ═══════════════ -->
+<div id="page-about" class="page">
+  <section style="padding-top:140px">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <div class="section-header reveal">
+            <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">من نحن</span></div>
+            <h2 class="section-title">جمعية <em>تصنع</em><br>الفارق</h2>
+          </div>
+          <div class="about-body reveal">
+            <p>جمعية شباب المنزه للرياضة والثقافة جمعية مغربية غير ربحية تأسست بهدف تقديم فضاءات عالية الجودة للشباب في حي بساتين المنزه بالرباط.</p>
+            <p>نؤمن إيماناً راسخاً بأن <strong>الشباب هم ركيزة المستقبل</strong>، ولذلك نعمل على تقديم برامج متنوعة تمتد من الفنون القتالية إلى الروبوتيك، مروراً بالفنون والثقافة ودعم الدراسة.</p>
+            <p>نسعى إلى بناء جيل متوازن جسدياً وفكرياً، متمسك بهويته، ومنفتح على العالم، قادر على المساهمة الفاعلة في مجتمعه.</p>
+          </div>
+          <div class="about-pillars reveal">
+            <div class="pillar"><span class="pillar-icon">🎯</span><div class="pillar-title">الرسالة</div><div class="pillar-desc">تنمية الشباب رياضياً وثقافياً وتقنياً في محيط محلي داعم.</div></div>
+            <div class="pillar"><span class="pillar-icon">🌟</span><div class="pillar-title">الرؤية</div><div class="pillar-desc">أن نكون مرجعاً جمعوياً في المغرب في مجال تنمية الشباب.</div></div>
+            <div class="pillar"><span class="pillar-icon">💎</span><div class="pillar-title">القيم</div><div class="pillar-desc">النزاهة والانضباط والإبداع والانتماء والتعاون.</div></div>
+            <div class="pillar"><span class="pillar-icon">🤝</span><div class="pillar-title">الشراكة</div><div class="pillar-desc">نتعاون مع الجهات المحلية والمؤسسات التعليمية.</div></div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="about-visual-panel">
+            <div class="about-location">
+              <div class="about-location-label">موقعنا</div>
+              <div class="about-location-value">حي بساتين المنزه</div>
+              <div class="about-location-sub">الرباط، المملكة المغربية</div>
+            </div>
+            <div class="about-divider"></div>
+            <div style="margin-bottom:28px">
+              <div class="about-location-label" style="margin-bottom:14px">تخصصاتنا</div>
+              <div class="about-disciplines">
+                <div class="discipline"><div class="discipline-dot"></div><span class="discipline-name">الفنون القتالية — كراطي، تايكواندو، MMA</span></div>
+                <div class="discipline"><div class="discipline-dot" style="background:var(--gold)"></div><span class="discipline-name">كارديو وللياقة البدنية للسيدات</span></div>
+                <div class="discipline"><div class="discipline-dot" style="background:#4A90D9"></div><span class="discipline-name">روبوتيك وإعلاميات</span></div>
+                <div class="discipline"><div class="discipline-dot" style="background:#7B68EE"></div><span class="discipline-name">دروس دعم في اللغات</span></div>
+                <div class="discipline"><div class="discipline-dot" style="background:var(--forest)"></div><span class="discipline-name">الثقافة والفنون والمسرح</span></div>
+                <div class="discipline"><div class="discipline-dot" style="background:#FF8C69"></div><span class="discipline-name">أنشطة ترفيهية واجتماعية</span></div>
+              </div>
+            </div>
+            <div class="about-divider"></div>
+            <button class="btn-submit" onclick="showPage('register')" style="margin-top:0">انضم إلينا اليوم</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ PAGE: PROGRAMS ═══════════════ -->
+<div id="page-programs" class="page">
+  <section style="padding-top:140px">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">البرامج</span></div>
+        <h2 class="section-title">برامجنا <em>الكاملة</em></h2>
+        <p class="section-subtitle">مجموعة متنوعة من التخصصات تلبي احتياجات مختلف الفئات العمرية والاهتمامات.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-header">
+            <div class="program-icon prog-martial">🥋</div>
+            <div class="program-title">الكراطي</div>
+            <div class="program-subtitle">KARATE</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc">تدريب احترافي في فن الكراطي لجميع الأعمار والمستويات. نمنح بطاقات الدان المعتمدة دولياً تحت إشراف مدربين مرخصين من الجامعة الملكية المغربية.</p>
+            <div class="program-tags"><span class="program-tag">أطفال</span><span class="program-tag">شباب</span><span class="program-tag">كبار</span><span class="program-tag">بطولات</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-2">
+          <div class="program-header">
+            <div class="program-icon prog-martial">🦵</div>
+            <div class="program-title">التايكواندو</div>
+            <div class="program-subtitle">TAEKWONDO</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc">الرياضة الأولمبية الكورية الأصل. نكوّن رياضيين قادرين على التنافس على المستوى الوطني والدولي.</p>
+            <div class="program-tags"><span class="program-tag">أولمبيك</span><span class="program-tag">تنافسي</span><span class="program-tag">كل الأعمار</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-3">
+          <div class="program-header">
+            <div class="program-icon prog-martial" style="background:#FFF0F0">🥊</div>
+            <div class="program-title">MMA</div>
+            <div class="program-subtitle">MIXED MARTIAL ARTS</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc">الفنون القتالية المختلطة: مزيج من الكراطي والمصارعة والجودو للمتقدمين الراغبين في تطوير مهاراتهم القتالية الشاملة.</p>
+            <div class="program-tags"><span class="program-tag">متقدم</span><span class="program-tag">شباب</span><span class="program-tag">تحضيري</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-header">
+            <div class="program-icon prog-fitness">💃</div>
+            <div class="program-title">كارديو للسيدات</div>
+            <div class="program-subtitle">LADIES CARDIO</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc">فضاء حصري للسيدات: تمارين كارديو، أيروبيك، وتمارين التقوية العضلية في جلسات مريحة وآمنة بإشراف مدربة متخصصة.</p>
+            <div class="program-tags"><span class="program-tag">سيدات فقط</span><span class="program-tag">كارديو</span><span class="program-tag">أيروبيك</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-2">
+          <div class="program-header">
+            <div class="program-icon prog-tech">🤖</div>
+            <div class="program-title">الروبوتيك</div>
+            <div class="program-subtitle">ROBOTICS</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc">نعلّم الأطفال والشباب بناء الروبوتات وبرمجتها. مقاربة تطبيقية تجمع بين المتعة والتعلم العلمي المعمّق.</p>
+            <div class="program-tags"><span class="program-tag">Arduino</span><span class="program-tag">LEGO</span><span class="program-tag">8-16 سنة</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-3">
+          <div class="program-header">
+            <div class="program-icon prog-tech" style="background:#E8F0FF">💻</div>
+            <div class="program-title">الإعلاميات</div>
+            <div class="program-subtitle">COMPUTER SCIENCE</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc">دروس برمجة، استخدام الأدوات الرقمية، وأمن المعلومات. نستعمل منهجية تدريجية تناسب المبتدئين والمتوسطين.</p>
+            <div class="program-tags"><span class="program-tag">برمجة</span><span class="program-tag">Python</span><span class="program-tag">Scratch</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-header">
+            <div class="program-icon prog-support">📚</div>
+            <div class="program-title">دروس الدعم</div>
+            <div class="program-subtitle">LANGUAGE SUPPORT</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc">دعم مدرسي في اللغة العربية والفرنسية والإنجليزية لمرافقة التلاميذ وتحسين مستواهم الدراسي.</p>
+            <div class="program-tags"><span class="program-tag">عربية</span><span class="program-tag">فرنسية</span><span class="program-tag">إنجليزية</span><span class="program-tag">كل المستويات</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-2">
+          <div class="program-header">
+            <div class="program-icon prog-culture">🎭</div>
+            <div class="program-title">الثقافة والفنون</div>
+            <div class="program-subtitle">CULTURE & ARTS</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc">مسرح، فنون تشكيلية، موسيقى، وخطابة. نؤمن بأن الثقافة تبني الشخصية وتوسع الآفاق.</p>
+            <div class="program-tags"><span class="program-tag">مسرح</span><span class="program-tag">رسم</span><span class="program-tag">موسيقى</span></div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-3">
+          <div class="program-header">
+            <div class="program-icon prog-fun">🎉</div>
+            <div class="program-title">أنشطة ترفيهية</div>
+            <div class="program-subtitle">RECREATIONAL</div>
+          </div>
+          <div class="program-body">
+            <p class="program-desc">رحلات ثقافية، ألعاب جماعية، معسكرات صيفية، وأحداث موسمية لتقوية الروابط الاجتماعية.</p>
+            <div class="program-tags"><span class="program-tag">رحلات</span><span class="program-tag">معسكرات</span><span class="program-tag">أعياد</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ PAGE: SCHEDULE ═══════════════ -->
+<div id="page-schedule" class="page">
+  <section class="schedule-section" style="padding-top:140px">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-line" style="background:var(--gold)"></div><span class="section-eyebrow-text">التوقيت</span></div>
+        <h2 class="section-title" style="color:var(--white)">البرنامج <em>الأسبوعي</em></h2>
+        <p class="section-subtitle">استعمال الزمن التفصيلي لجميع الأنشطة والبرامج.</p>
+      </div>
+      <div class="schedule-filter reveal">
+        <button class="filter-btn active" onclick="filterSch('all')">الكل</button>
+        <button class="filter-btn" onclick="filterSch('martial')">🥋 فنون قتالية</button>
+        <button class="filter-btn" onclick="filterSch('fitness')">💪 كارديو</button>
+        <button class="filter-btn" onclick="filterSch('tech')">🤖 روبوتيك</button>
+        <button class="filter-btn" onclick="filterSch('support')">📚 دعم</button>
+        <button class="filter-btn" onclick="filterSch('culture')">🎭 ثقافة</button>
+      </div>
+      <div class="reveal" style="overflow-x:auto">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>اليوم</th>
+              <th>التوقيت</th>
+              <th>النشاط</th>
+              <th>الفئة</th>
+              <th>المكان</th>
+            </tr>
+          </thead>
+          <tbody id="schedule-body">
+            <tr data-cat="martial"><td class="sch-day">الاثنين</td><td class="sch-time">16:00 – 18:00</td><td style="color:rgba(255,255,255,0.8)">كراطي</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة رئيسية</td></tr>
+            <tr data-cat="support"><td class="sch-day">الاثنين</td><td class="sch-time">17:00 – 19:00</td><td style="color:rgba(255,255,255,0.8)">دروس دعم — عربية</td><td><span class="sch-badge sch-support">دعم دراسي</span></td><td class="sch-time">قاعة الدراسة</td></tr>
+            <tr data-cat="martial"><td class="sch-day">الثلاثاء</td><td class="sch-time">16:00 – 18:00</td><td style="color:rgba(255,255,255,0.8)">تايكواندو</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة رئيسية</td></tr>
+            <tr data-cat="tech"><td class="sch-day">الثلاثاء</td><td class="sch-time">15:00 – 17:00</td><td style="color:rgba(255,255,255,0.8)">روبوتيك — مستوى 1</td><td><span class="sch-badge sch-tech">تكنولوجيا</span></td><td class="sch-time">قاعة الإعلاميات</td></tr>
+            <tr data-cat="fitness"><td class="sch-day">الثلاثاء</td><td class="sch-time">10:00 – 11:30</td><td style="color:rgba(255,255,255,0.8)">كارديو للسيدات</td><td><span class="sch-badge sch-fitness">لياقة</span></td><td class="sch-time">القاعة المخصصة</td></tr>
+            <tr data-cat="support"><td class="sch-day">الأربعاء</td><td class="sch-time">16:00 – 18:00</td><td style="color:rgba(255,255,255,0.8)">دروس دعم — فرنسية</td><td><span class="sch-badge sch-support">دعم دراسي</span></td><td class="sch-time">قاعة الدراسة</td></tr>
+            <tr data-cat="martial"><td class="sch-day">الأربعاء</td><td class="sch-time">17:00 – 19:00</td><td style="color:rgba(255,255,255,0.8)">MMA</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة رئيسية</td></tr>
+            <tr data-cat="tech"><td class="sch-day">الخميس</td><td class="sch-time">15:00 – 17:00</td><td style="color:rgba(255,255,255,0.8)">إعلاميات — برمجة</td><td><span class="sch-badge sch-tech">تكنولوجيا</span></td><td class="sch-time">قاعة الإعلاميات</td></tr>
+            <tr data-cat="culture"><td class="sch-day">الخميس</td><td class="sch-time">17:00 – 19:00</td><td style="color:rgba(255,255,255,0.8)">مسرح وفنون</td><td><span class="sch-badge sch-culture">ثقافة وفنون</span></td><td class="sch-time">القاعة الثقافية</td></tr>
+            <tr data-cat="fitness"><td class="sch-day">الخميس</td><td class="sch-time">10:00 – 11:30</td><td style="color:rgba(255,255,255,0.8)">كارديو للسيدات</td><td><span class="sch-badge sch-fitness">لياقة</span></td><td class="sch-time">القاعة المخصصة</td></tr>
+            <tr data-cat="martial"><td class="sch-day">الجمعة</td><td class="sch-time">16:00 – 18:00</td><td style="color:rgba(255,255,255,0.8)">كراطي — متقدم</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة رئيسية</td></tr>
+            <tr data-cat="support"><td class="sch-day">الجمعة</td><td class="sch-time">17:00 – 19:00</td><td style="color:rgba(255,255,255,0.8)">دروس دعم — إنجليزية</td><td><span class="sch-badge sch-support">دعم دراسي</span></td><td class="sch-time">قاعة الدراسة</td></tr>
+            <tr data-cat="martial"><td class="sch-day">السبت</td><td class="sch-time">09:00 – 12:00</td><td style="color:rgba(255,255,255,0.8)">تايكواندو + مسابقات</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة رئيسية</td></tr>
+            <tr data-cat="tech"><td class="sch-day">السبت</td><td class="sch-time">10:00 – 12:00</td><td style="color:rgba(255,255,255,0.8)">روبوتيك — مستوى 2</td><td><span class="sch-badge sch-tech">تكنولوجيا</span></td><td class="sch-time">قاعة الإعلاميات</td></tr>
+            <tr data-cat="culture"><td class="sch-day">السبت</td><td class="sch-time">14:00 – 16:00</td><td style="color:rgba(255,255,255,0.8)">أنشطة ترفيهية</td><td><span class="sch-badge sch-culture">ثقافة وفنون</span></td><td class="sch-time">فضاء مفتوح</td></tr>
+            <tr data-cat="fitness"><td class="sch-day">السبت</td><td class="sch-time">10:00 – 11:30</td><td style="color:rgba(255,255,255,0.8)">كارديو للسيدات</td><td><span class="sch-badge sch-fitness">لياقة</span></td><td class="sch-time">القاعة المخصصة</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ PAGE: TEAM ═══════════════ -->
+<div id="page-team" class="page">
+  <section style="padding-top:140px">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">الفريق</span></div>
+        <h2 class="section-title">الأشخاص <em>خلف</em> الجمعية</h2>
+        <p class="section-subtitle">فريق متحمس ومتخصص يعمل بشغف من أجل الشباب.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar av1">م</div>
+            <div class="team-badge">★</div>
+          </div>
+          <div class="team-name">محمد أمين</div>
+          <div class="team-role">رئيس الجمعية</div>
+          <p class="team-bio">قائد متمرس مع أكثر من 10 سنوات في العمل الجمعوي والشبابي. رؤيته تحرك الجمعية نحو التميز.</p>
+        </div>
+        <div class="team-card reveal reveal-delay-2">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar av2">ف</div>
+            <div class="team-badge">🎭</div>
+          </div>
+          <div class="team-name">فاطمة الزهراء</div>
+          <div class="team-role">مسؤولة الأنشطة الثقافية</div>
+          <p class="team-bio">فنانة ومدربة متخصصة في الفنون المسرحية، تسهر على البرامج الإبداعية للجمعية.</p>
+        </div>
+        <div class="team-card reveal reveal-delay-3">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar av3">ي</div>
+            <div class="team-badge">🥋</div>
+          </div>
+          <div class="team-name">يوسف الحسني</div>
+          <div class="team-role">مدرب الفنون القتالية</div>
+          <p class="team-bio">حامل حزام أسود في الكراطي والتايكواندو، مرخص من الجامعة الملكية المغربية للرياضة.</p>
+        </div>
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar av4">س</div>
+            <div class="team-badge">🤖</div>
+          </div>
+          <div class="team-name">سلمى بنعلي</div>
+          <div class="team-role">مسؤولة الروبوتيك والتقنية</div>
+          <p class="team-bio">مهندسة معلوميات شغوفة بتعليم التكنولوجيا للأطفال والشباب بطريقة ممتعة وتطبيقية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ PAGE: REGISTER ═══════════════ -->
+<div id="page-register" class="page">
+  <section class="registration-section" style="padding-top:140px">
+    <div class="section-inner">
+      <div class="registration-grid">
+        <div class="reveal">
+          <div class="section-eyebrow" style="margin-bottom:16px"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">الانخراط</span></div>
+          <div class="registration-intro">
+            <h2>انضم إلى <em>عائلة</em><br>شباب المنزه</h2>
+            <p>سجّل الآن واستفد من جميع برامجنا المتنوعة. الأبواب مفتوحة للجميع!</p>
+          </div>
+          <ul class="reg-benefits">
+            <li><div class="reg-benefit-check">✓</div><span>الوصول لجميع البرامج الرياضية والثقافية</span></li>
+            <li><div class="reg-benefit-check">✓</div><span>شهادات وبطاقات معتمدة في الفنون القتالية</span></li>
+            <li><div class="reg-benefit-check">✓</div><span>دروس روبوتيك وإعلاميات بمعدات متطورة</span></li>
+            <li><div class="reg-benefit-check">✓</div><span>دعم مدرسي في اللغات من أساتذة متخصصين</span></li>
+            <li><div class="reg-benefit-check">✓</div><span>مشاركة في الرحلات والمهرجانات والمسابقات</span></li>
+            <li><div class="reg-benefit-check">✓</div><span>فضاء آمن ومريح في قلب حي بساتين المنزه</span></li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="reg-form" id="reg-form-wrap">
+            <h3>استمارة الانخراط</h3>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">الاسم الأول</label><input type="text" class="form-input" placeholder="محمد"></div>
+              <div class="form-group"><label class="form-label">الاسم العائلي</label><input type="text" class="form-input" placeholder="بنعلي"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">تاريخ الميلاد</label><input type="date" class="form-input"></div>
+              <div class="form-group"><label class="form-label">الجنس</label>
+                <select class="form-input form-select">
+                  <option>ذكر</option>
+                  <option>أنثى</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group"><label class="form-label">رقم الهاتف</label><input type="tel" class="form-input" placeholder="+212 6XX-XXXXXX" dir="ltr"></div>
+            <div class="form-group"><label class="form-label">البريد الإلكتروني (اختياري)</label><input type="email" class="form-input" placeholder="email@example.com" dir="ltr"></div>
+            <div class="form-group">
+              <label class="form-label">الأنشطة المطلوبة</label>
+              <div class="sport-checkboxes">
+                <div class="sport-check-item"><input type="checkbox" id="c1"><label for="c1">🥋 كراطي</label></div>
+                <div class="sport-check-item"><input type="checkbox" id="c2"><label for="c2">🦵 تايكواندو</label></div>
+                <div class="sport-check-item"><input type="checkbox" id="c3"><label for="c3">🥊 MMA</label></div>
+                <div class="sport-check-item"><input type="checkbox" id="c4"><label for="c4">💃 كارديو (سيدات)</label></div>
+                <div class="sport-check-item"><input type="checkbox" id="c5"><label for="c5">🤖 روبوتيك</label></div>
+                <div class="sport-check-item"><input type="checkbox" id="c6"><label for="c6">💻 إعلاميات</label></div>
+                <div class="sport-check-item"><input type="checkbox" id="c7"><label for="c7">📚 دروس دعم</label></div>
+                <div class="sport-check-item"><input type="checkbox" id="c8"><label for="c8">🎭 ثقافة وفنون</label></div>
+              </div>
+            </div>
+            <div class="form-group"><label class="form-label">ملاحظات (اختياري)</label><input type="text" class="form-input" placeholder="أي معلومة إضافية..."></div>
+            <button class="btn-submit" onclick="submitReg()">إرسال طلب الانخراط ←</button>
+          </div>
+          <div class="form-success" id="reg-success">
+            <span class="success-icon">🎉</span>
+            <h4>تم تسجيل طلبك بنجاح!</h4>
+            <p>سنتواصل معك في أقرب وقت ممكن على الرقم المسجّل لتأكيد انخراطك ومعرفة موعد البداية.</p>
+            <br>
+            <button class="btn-submit" onclick="showPage('home')" style="margin-top:16px">العودة للرئيسية</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ PAGE: CONTACT ═══════════════ -->
+<div id="page-contact" class="page">
+  <section class="contact-section" style="padding-top:140px">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">تواصل</span></div>
+        <h2 class="section-title">نحن <em>هنا</em> من أجلك</h2>
+        <p class="section-subtitle">لأي استفسار أو معلومة، لا تتردد في التواصل معنا.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📍</div>
+              <div class="contact-detail-content">
+                <h4>العنوان</h4>
+                <p>حي بساتين المنزه، الرباط<br>المملكة المغربية</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">📞</div>
+              <div class="contact-detail-content">
+                <h4>الهاتف</h4>
+                <p>+212 5XX-XXXXXX</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">✉️</div>
+              <div class="contact-detail-content">
+                <h4>البريد الإلكتروني</h4>
+                <p>contact@menzah-jeunesse.ma</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">⏰</div>
+              <div class="contact-detail-content">
+                <h4>ساعات الاستقبال</h4>
+                <p>الاثنين – الجمعة: 14:00 – 20:00<br>السبت: 09:00 – 17:00</p>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:32px">
+            <a href="https://wa.me/212600000000" class="whatsapp-btn" target="_blank">
+              <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              تواصل معنا عبر واتساب
+            </a>
+          </div>
+          <div class="contact-map-placeholder">
+            <span>📍</span>
+            <p>حي بساتين المنزه، الرباط<br><small style="opacity:0.6">اضغط هنا لفتح الخريطة</small></p>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="contact-form-card">
+            <h3>راسلنا مباشرة</h3>
+            <div class="form-group"><label class="form-label">الاسم الكامل</label><input type="text" class="form-input" placeholder="اسمك الكامل"></div>
+            <div class="form-group"><label class="form-label">الهاتف</label><input type="tel" class="form-input" placeholder="+212 6XX-XXXXXX" dir="ltr"></div>
+            <div class="form-group"><label class="form-label">الموضوع</label>
+              <select class="form-input form-select">
+                <option>اختر موضوع رسالتك</option>
+                <option>معلومات عن الانخراط</option>
+                <option>أسئلة عن البرامج</option>
+                <option>شراكة أو تعاون</option>
+                <option>أخرى</option>
+              </select>
+            </div>
+            <div class="form-group"><label class="form-label">رسالتك</label><textarea class="form-input" rows="5" placeholder="اكتب رسالتك هنا..."></textarea></div>
+            <button class="btn-submit" onclick="submitContact()">إرسال الرسالة ←</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="Menzeh_new_2.png" alt="Menzah" onerror="this.style.display='none'">
+        <div class="footer-brand-name">جمعية شباب المنزه</div>
+        <p>للرياضة والثقافة — نبني أجيالاً واثقة ومتوازنة في حي بساتين المنزه، الرباط.</p>
+      </div>
+      <div class="footer-col">
+        <h4>روابط</h4>
+        <ul>
+          <li><a onclick="showPage('home')">الرئيسية</a></li>
+          <li><a onclick="showPage('about')">عن الجمعية</a></li>
+          <li><a onclick="showPage('programs')">البرامج</a></li>
+          <li><a onclick="showPage('schedule')">البرنامج الأسبوعي</a></li>
+          <li><a onclick="showPage('team')">الفريق</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>البرامج</h4>
+        <ul>
+          <li><a onclick="showPage('programs')">الفنون القتالية</a></li>
+          <li><a onclick="showPage('programs')">كارديو للسيدات</a></li>
+          <li><a onclick="showPage('programs')">روبوتيك وإعلاميات</a></li>
+          <li><a onclick="showPage('programs')">دروس الدعم</a></li>
+          <li><a onclick="showPage('programs')">الثقافة والفنون</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>تواصل</h4>
+        <ul>
+          <li><a>📍 بساتين المنزه، الرباط</a></li>
+          <li><a href="https://wa.me/212600000000" target="_blank">💬 واتساب</a></li>
+          <li><a onclick="showPage('register')">📝 انخرط الآن</a></li>
+          <li><a onclick="showPage('contact')">✉️ راسلنا</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 جمعية شباب المنزه للرياضة والثقافة — <span class="footer-gold">الرباط، المغرب</span></p>
+      <p>صُنع بـ ❤️ من أجل شباب المنزه</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── CURSOR ───
+const dot = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+document.addEventListener('mousemove', e => {
+  dot.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+  ring.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
+});
+
+// ─── LOADER ───
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+    initReveal();
+  }, 2200);
+});
+
+// ─── NAV SCROLL ───
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// ─── PAGES ───
+const allPages = ['home','about','programs','schedule','team','register','contact'];
+function showPage(id) {
+  allPages.forEach(p => {
+    document.getElementById('page-'+p).classList.remove('active');
+    const n = document.getElementById('nl-'+p);
+    if(n) n.classList.remove('active');
+  });
+  document.getElementById('page-'+id).classList.add('active');
+  const n = document.getElementById('nl-'+id);
+  if(n) n.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  setTimeout(initReveal, 100);
+}
+
+// ─── MOBILE MENU ───
+function toggleMobile() {
+  const mn = document.getElementById('mobile-nav');
+  mn.classList.toggle('open');
+}
+
+// ─── REVEAL ON SCROLL ───
+function initReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => {
+    el.classList.remove('visible');
+    obs.observe(el);
+  });
+}
+
+// ─── SCHEDULE FILTER ───
+function filterSch(cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('#schedule-body tr').forEach(row => {
+    row.style.display = (cat === 'all' || row.dataset.cat === cat) ? '' : 'none';
+  });
+}
+
+// ─── FORMS ───
+function submitReg() {
+  document.getElementById('reg-form-wrap').style.display = 'none';
+  document.getElementById('reg-success').style.display = 'block';
+}
+function submitContact() {
+  alert('شكراً! تم إرسال رسالتك. سنتواصل معك قريباً 🙏');
+}
+
+// ─── LANG ───
+const T = {
+  ar: {
+    'nl-home':'الرئيسية','nl-about':'عن الجمعية','nl-programs':'البرامج',
+    'nl-schedule':'البرنامج الأسبوعي','nl-team':'الفريق','nl-contact':'تواصل',
+    'nl-register':'انخرط الآن','h-eyebrow':'رياضة · ثقافة · تكنولوجيا',
+    'h-title-ar':'جمعية شباب المنزه','h-desc':'نرسم مستقبل الشباب بالرياضة والثقافة والتكنولوجيا.',
+    'h-btn1':'انخرط الآن','h-btn2-text':'اكتشف برامجنا',
+    'hs1':'عضو نشيط','hs2':'تخصصات','hs3':'سنة خبرة','hs4':'نشاط/أسبوع',
+    'scroll-label':'اكتشف','qp-eyebrow':'برامجنا','qp-title':'ما نقدمه لشبابنا',
+    'qp-sub':'من الفنون القتالية إلى الروبوتيك، نوفر بيئة متكاملة.',
+  },
+  fr: {
+    'nl-home':'Accueil','nl-about':'À propos','nl-programs':'Programmes',
+    'nl-schedule':'Emploi du temps','nl-team':'Équipe','nl-contact':'Contact',
+    'nl-register':"S'inscrire",'h-eyebrow':'Sport · Culture · Technologie',
+    'h-title-ar':'Association Jeunesse Menzah',
+    'h-desc':'Nous façonnons l\'avenir des jeunes à travers le sport, la culture et la technologie.',
+    'h-btn1':"S'inscrire",'h-btn2-text':'Découvrir nos programmes',
+    'hs1':'Membres actifs','hs2':'Spécialités','hs3':'Ans d\'expérience','hs4':'Activités/sem.',
+    'scroll-label':'Découvrir','qp-eyebrow':'Programmes','qp-title':'Ce que nous offrons',
+    'qp-sub':'Des arts martiaux à la robotique, nous offrons un cadre complet.',
+  },
+  en: {
+    'nl-home':'Home','nl-about':'About','nl-programs':'Programs',
+    'nl-schedule':'Schedule','nl-team':'Team','nl-contact':'Contact',
+    'nl-register':'Join Now','h-eyebrow':'Sport · Culture · Technology',
+    'h-title-ar':'Menzah Youth Association',
+    'h-desc':'We shape the future of youth through sports, culture and technology.',
+    'h-btn1':'Join Now','h-btn2-text':'Explore our programs',
+    'hs1':'Active Members','hs2':'Disciplines','hs3':'Years of Experience','hs4':'Activities/week',
+    'scroll-label':'Discover','qp-eyebrow':'Programs','qp-title':'What We Offer',
+    'qp-sub':'From martial arts to robotics, we provide a complete environment.',
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = lang;
+  const t = T[lang] || T.ar;
+  Object.keys(t).forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.textContent = t[id];
+  });
+}
+
+initReveal();
+</script>
+</body>
+</html>
