@@ -121,7 +121,64 @@ nav.scrolled { box-shadow: 0 4px 40px rgba(18,16,14,0.08); }
   background-image:
     repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.02) 79px, rgba(255,255,255,0.02) 80px),
     repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.02) 79px, rgba(255,255,255,0.02) 80px);
+  z-index: 2;
 }
+
+/* ── HERO IMAGE SLIDER ── */
+.hero-slider {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 8s ease;
+  transform: scale(1.06);
+}
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.hero-slide-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10,10,20,0.75) 0%,
+    rgba(10,10,20,0.55) 50%,
+    rgba(10,10,20,0.70) 100%
+  );
+}
+.hero-slider-dots {
+  position: absolute; bottom: 90px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 10px; z-index: 10;
+}
+.hero-slider-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.35); border: none; cursor: pointer;
+  padding: 0; transition: all 0.4s ease;
+}
+.hero-slider-dot.active {
+  background: rgba(255,255,255,0.9);
+  width: 28px; border-radius: 4px;
+}
+.hero-slider-progress {
+  position: absolute; bottom: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--crimson), var(--gold));
+  z-index: 10; width: 0%;
+  transition: width 5s linear;
+}
+.hero-slider-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 10; background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2); color: #fff;
+  width: 44px; height: 44px; border-radius: 50%;
+  cursor: pointer; font-size: 20px; display: flex;
+  align-items: center; justify-content: center;
+  transition: all 0.3s; backdrop-filter: blur(6px);
+}
+.hero-slider-nav:hover { background: rgba(255,255,255,0.2); transform: translateY(-50%) scale(1.08); }
+.hero-slider-nav.prev { right: 24px; }
+.hero-slider-nav.next { left: 24px; }
 .hero-accent { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(184,25,43,0.15) 0%, transparent 70%); top: -100px; right: -100px; }
 .hero-accent-2 { position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(28,74,46,0.2) 0%, transparent 70%); bottom: -50px; left: 10%; }
 

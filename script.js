@@ -330,5 +330,75 @@ function setLang(lang, btn) {
   });
 }
 
+/* ─── HERO IMAGE SLIDER ─── */
+(function() {
+  var slides, dots, progress, current = 0, timer, total = 4;
+
+  function init() {
+    slides = document.querySelectorAll('.hero-slide');
+    var dotsWrap = document.getElementById('heroSliderDots');
+    progress = document.getElementById('heroSliderProgress');
+    if (!slides.length || !dotsWrap) return;
+    total = slides.length;
+
+    for (var i = 0; i < total; i++) {
+      var d = document.createElement('button');
+      d.className = 'hero-slider-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('data-i', i);
+      d.onclick = (function(idx){ return function(){ goTo(idx); }; })(i);
+      dotsWrap.appendChild(d);
+    }
+    dots = dotsWrap.querySelectorAll('.hero-slider-dot');
+    startAuto();
+  }
+
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (idx + total) % total;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    resetProgress();
+    clearInterval(timer);
+    startAuto();
+  }
+
+  function resetProgress() {
+    if (!progress) return;
+    progress.style.transition = 'none';
+    progress.style.width = '0%';
+    setTimeout(function(){
+      progress.style.transition = 'width 5s linear';
+      progress.style.width = '100%';
+    }, 30);
+  }
+
+  function startAuto() {
+    resetProgress();
+    timer = setInterval(function(){ goTo(current + 1); }, 5000);
+  }
+
+  window.heroSliderNav = function(dir) { goTo(current + dir); };
+
+  // Touch swipe
+  var sx = 0;
+  document.addEventListener('touchstart', function(e){
+    var hero = e.target.closest('.hero');
+    if (hero) sx = e.touches[0].clientX;
+  }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    var hero = e.target.closest('.hero');
+    if (!hero) return;
+    var dx = sx - e.changedTouches[0].clientX;
+    if (Math.abs(dx) > 50) goTo(current + (dx > 0 ? 1 : -1));
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
 /* ─── INIT ─── */
 initReveal();

@@ -3,11 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="جمعية شباب المنزه تقدم برامج رياضية، ثقافية وتعليمية للشباب في بساتين المنزه بالرباط، مع انخراط مفتوح لجميع الأعمار في بيئة آمنة ومحفزة.">
+<meta name="robots" content="index,follow">
 <title>جمعية شباب المنزه | Menzah Youth Association</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet"></noscript>
+<meta property="og:type" content="website">
+<meta property="og:title" content="جمعية شباب المنزه | Menzah Youth Association">
+<meta property="og:description" content="جمعية شباب المنزه تقدم برامج رياضية، ثقافية وتعليمية للشباب في بساتين المنزه بالرباط، مع انخراط مفتوح لجميع الأعمار في بيئة آمنة ومحفزة.">
+<meta property="og:locale" content="ar">
+<meta property="og:image" content="Menzeh_new_2.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="جمعية شباب المنزه | Menzah Youth Association">
+<meta name="twitter:description" content="جمعية شباب المنزه تقدم برامج رياضية، ثقافية وتعليمية للشباب في بساتين المنزه بالرباط، مع انخراط مفتوح لجميع الأعمار في بيئة آمنة ومحفزة.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "جمعية شباب المنزه",
+  "alternateName": "Menzah Youth Association",
+  "logo": "Menzeh_new_2.png",
+  "description": "جمعية شباب المنزه تقدم برامج رياضية، ثقافية وتعليمية للشباب في بساتين المنزه بالرباط، مع انخراط مفتوح لجميع الأعمار في بيئة آمنة ومحفزة."
+}
+</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -67,7 +87,17 @@
 <!-- ══════════════ PAGE: HOME ══════════════ -->
 <div id="page-home" class="page active">
   <div class="hero">
-    <div class="hero-bg-pattern"></div>
+    <!-- IMAGE SLIDER -->
+    <div class="hero-slider" id="heroSlider">
+      <div class="hero-slide active" style="background-image:url('1.jpg')"><div class="hero-slide-overlay"></div></div>
+      <div class="hero-slide" style="background-image:url('2.jpg')"><div class="hero-slide-overlay"></div></div>
+      <div class="hero-slide" style="background-image:url('3.jpg')"><div class="hero-slide-overlay"></div></div>
+      <div class="hero-slide" style="background-image:url('4.jpg')"><div class="hero-slide-overlay"></div></div>
+      <button class="hero-slider-nav prev" onclick="heroSliderNav(-1)">&#8250;</button>
+      <button class="hero-slider-nav next" onclick="heroSliderNav(1)">&#8249;</button>
+      <div class="hero-slider-dots" id="heroSliderDots"></div>
+      <div class="hero-slider-progress" id="heroSliderProgress"></div>
+    </div>
     <div class="hero-accent"></div>
     <div class="hero-accent-2"></div>
     <div class="hero-inner">
