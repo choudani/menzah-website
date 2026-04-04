@@ -302,6 +302,13 @@ section { padding: 100px 48px; }
 .team-card:hover { box-shadow: 0 16px 50px rgba(18,16,14,0.08); transform: translateY(-4px); }
 .team-avatar-wrap { position: relative; margin: 0 auto 20px; width: 80px; height: 80px; }
 .team-avatar { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--white); }
+.team-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; object-position: center top; display: block; border: 2px solid rgba(255,255,255,0.12); }
+
+/* ── SOCIAL ICONS ── */
+.footer-social { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.social-icon { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; transition: all 0.3s; text-decoration: none; }
+.social-icon:hover { background: var(--crimson); border-color: var(--crimson); color: #fff; transform: translateY(-3px); }
+.social-icon.social-whatsapp:hover { background: #25D366; border-color: #25D366; }
 .av1 { background: linear-gradient(135deg, var(--crimson), var(--crimson-deep)); }
 .av2 { background: linear-gradient(135deg, var(--forest), #0D3320); }
 .av3 { background: linear-gradient(135deg, #1B4F8A, #0D2F55); }

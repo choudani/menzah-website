@@ -60,10 +60,10 @@
     <a onclick="showPage('register')" class="nav-cta" id="nl-register">انخرط الآن</a>
   </div>
   <div style="display:flex;gap:8px;align-items:center">
-    <button class="dark-toggle" onclick="toggleDark()" id="dark-btn" title="الوضع الليلي">🌙</button>
+    <button class="dark-toggle" onclick="toggleDark()" id="dark-btn" data-ar-title="الوضع الليلي" data-en-title="Dark Mode" title="الوضع الليلي">🌙</button>
     <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('ar',this)">ع</button>
-      <button class="lang-btn" onclick="setLang('en',this)">EN</button>
+      <button class="lang-btn active" data-lang="ar" onclick="setLang('ar',this)">ع</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en',this)">EN</button>
     </div>
     <div class="mobile-menu-btn" onclick="toggleMobile()">
       <span></span><span></span><span></span>
@@ -73,15 +73,15 @@
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobile-nav">
-  <a onclick="showPage('home')">الرئيسية</a>
-  <a onclick="showPage('about')">عن الجمعية</a>
-  <a onclick="showPage('programs')">البرامج</a>
-  <a onclick="showPage('schedule')">البرنامج الأسبوعي</a>
-  <a onclick="showPage('team')">الفريق</a>
-  <a onclick="showPage('partners')">الشركاء</a>
-  <a onclick="showPage('donate')">تبرع 💚</a>
-  <a onclick="showPage('contact')">تواصل</a>
-  <a onclick="showPage('register')" style="background:var(--crimson);color:#fff;margin-top:8px">انخرط الآن</a>
+  <a onclick="showPage('home')" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+  <a onclick="showPage('about')" data-ar="عن الجمعية" data-en="About">عن الجمعية</a>
+  <a onclick="showPage('programs')" data-ar="البرامج" data-en="Programs">البرامج</a>
+  <a onclick="showPage('schedule')" data-ar="البرنامج الأسبوعي" data-en="Schedule">البرنامج الأسبوعي</a>
+  <a onclick="showPage('team')" data-ar="الفريق" data-en="Team">الفريق</a>
+  <a onclick="showPage('partners')" data-ar="الشركاء" data-en="Partners">الشركاء</a>
+  <a onclick="showPage('donate')" data-ar="تبرع 💚" data-en="Donate 💚">تبرع 💚</a>
+  <a onclick="showPage('contact')" data-ar="تواصل" data-en="Contact">تواصل</a>
+  <a onclick="showPage('register')" style="background:var(--crimson);color:#fff;margin-top:8px" data-ar="انخرط الآن" data-en="Join Now">انخرط الآن</a>
 </div>
 
 <!-- ══════════════ PAGE: HOME ══════════════ -->
@@ -149,66 +149,66 @@
         <div class="program-card reveal reveal-delay-1">
           <div class="program-header">
             <div class="program-icon prog-martial">🥋</div>
-            <div class="program-title">الفنون القتالية</div>
-            <div class="program-subtitle">MARTIAL ARTS</div>
+            <div class="program-title" id="pc1-title">الفنون القتالية</div>
+            <div class="program-subtitle" id="pc1-sub">MARTIAL ARTS</div>
           </div>
           <div class="program-body">
-            <p class="program-desc">كراطي، تايكواندو، وMMA — تدريب احترافي لجميع المستويات بقاعة الرياضة بدار الشباب.</p>
+            <p class="program-desc" id="pc1-desc">كراطي، تايكواندو، وMMA — تدريب احترافي لجميع المستويات بقاعة الرياضة بدار الشباب.</p>
             <div class="program-tags"><span class="program-tag">كراطي</span><span class="program-tag">تايكواندو</span><span class="program-tag">MMA</span></div>
           </div>
         </div>
         <div class="program-card reveal reveal-delay-2">
           <div class="program-header">
             <div class="program-icon prog-fitness">💪</div>
-            <div class="program-title">كارديو للسيدات</div>
-            <div class="program-subtitle">LADIES FITNESS</div>
+            <div class="program-title" id="pc2-title">كارديو للسيدات</div>
+            <div class="program-subtitle" id="pc2-sub">LADIES FITNESS</div>
           </div>
           <div class="program-body">
-            <p class="program-desc">فضاء خاص للسيدات بملعب القرب: برامج لياقة بدنية في أجواء مريحة وآمنة.</p>
+            <p class="program-desc" id="pc2-desc">فضاء خاص للسيدات بملعب القرب: برامج لياقة بدنية في أجواء مريحة وآمنة.</p>
             <div class="program-tags"><span class="program-tag">كارديو</span><span class="program-tag">لياقة</span><span class="program-tag">سيدات</span></div>
           </div>
         </div>
         <div class="program-card reveal reveal-delay-3">
           <div class="program-header">
             <div class="program-icon prog-tech">🤖</div>
-            <div class="program-title">روبوتيك وإعلاميات</div>
-            <div class="program-subtitle">ROBOTICS & IT</div>
+            <div class="program-title" id="pc3-title">روبوتيك وإعلاميات</div>
+            <div class="program-subtitle" id="pc3-sub">ROBOTICS & IT</div>
           </div>
           <div class="program-body">
-            <p class="program-desc">دروس برمجة وروبوتيك لإعداد جيل متمكن من التكنولوجيا ومستعد لمستقبل رقمي.</p>
+            <p class="program-desc" id="pc3-desc">دروس برمجة وروبوتيك لإعداد جيل متمكن من التكنولوجيا ومستعد لمستقبل رقمي.</p>
             <div class="program-tags"><span class="program-tag">روبوتيك</span><span class="program-tag">برمجة</span><span class="program-tag">إعلاميات</span></div>
           </div>
         </div>
         <div class="program-card reveal reveal-delay-1">
           <div class="program-header">
             <div class="program-icon prog-support">📖</div>
-            <div class="program-title">دروس الدعم</div>
-            <div class="program-subtitle">LANGUAGE SUPPORT</div>
+            <div class="program-title" id="pc4-title">دروس الدعم</div>
+            <div class="program-subtitle" id="pc4-sub">LANGUAGE SUPPORT</div>
           </div>
           <div class="program-body">
-            <p class="program-desc">دعم مدرسي في اللغة العربية والإنجليزية لمساعدة التلاميذ على التفوق الدراسي.</p>
+            <p class="program-desc" id="pc4-desc">دعم مدرسي في اللغة العربية والإنجليزية لمساعدة التلاميذ على التفوق الدراسي.</p>
             <div class="program-tags"><span class="program-tag">عربية</span><span class="program-tag">إنجليزية</span></div>
           </div>
         </div>
         <div class="program-card reveal reveal-delay-2">
           <div class="program-header">
             <div class="program-icon prog-culture">🎭</div>
-            <div class="program-title">الثقافة والفنون</div>
-            <div class="program-subtitle">CULTURE & ARTS</div>
+            <div class="program-title" id="pc5-title">الثقافة والفنون</div>
+            <div class="program-subtitle" id="pc5-sub">CULTURE & ARTS</div>
           </div>
           <div class="program-body">
-            <p class="program-desc">مسرح، موسيقى، وفنون تشكيلية — فضاء إبداعي لاكتشاف وتطوير المواهب الفنية.</p>
+            <p class="program-desc" id="pc5-desc">مسرح، موسيقى، وفنون تشكيلية — فضاء إبداعي لاكتشاف وتطوير المواهب الفنية.</p>
             <div class="program-tags"><span class="program-tag">مسرح</span><span class="program-tag">موسيقى</span><span class="program-tag">فنون</span></div>
           </div>
         </div>
         <div class="program-card reveal reveal-delay-3">
           <div class="program-header">
             <div class="program-icon prog-fun">🎉</div>
-            <div class="program-title">أنشطة ترفيهية</div>
-            <div class="program-subtitle">RECREATIONAL</div>
+            <div class="program-title" id="pc6-title">أنشطة ترفيهية</div>
+            <div class="program-subtitle" id="pc6-sub">RECREATIONAL</div>
           </div>
           <div class="program-body">
-            <p class="program-desc">رحلات، ألعاب جماعية، ومهرجانات موسمية لتقوية الروابط الاجتماعية والانتماء.</p>
+            <p class="program-desc" id="pc6-desc">رحلات، ألعاب جماعية، ومهرجانات موسمية لتقوية الروابط الاجتماعية والانتماء.</p>
             <div class="program-tags"><span class="program-tag">رحلات</span><span class="program-tag">ألعاب</span><span class="program-tag">مهرجانات</span></div>
           </div>
         </div>
@@ -224,42 +224,42 @@
       <div class="about-grid">
         <div>
           <div class="section-header reveal">
-            <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">من نحن</span></div>
-            <h2 class="section-title">جمعية <em>تصنع</em><br>الفارق</h2>
+            <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text" id="about-eyebrow">من نحن</span></div>
+            <h2 class="section-title" id="about-title">جمعية <em>تصنع</em><br>الفارق</h2>
           </div>
           <div class="about-body reveal">
-            <p>جمعية شباب المنزه للرياضة والثقافة جمعية مغربية غير ربحية تأسست بهدف تقديم فضاءات عالية الجودة للشباب في <strong>حي بساتين المنزه بالرباط</strong>.</p>
-            <p>نؤمن إيماناً راسخاً بأن <strong>الشباب هم ركيزة المستقبل</strong>، ولذلك نعمل على تقديم برامج متنوعة تمتد من الفنون القتالية إلى الروبوتيك، مروراً بالفنون والثقافة ودعم الدراسة.</p>
-            <p>نسعى إلى بناء جيل متوازن جسدياً وفكرياً، متمسك بهويته، ومنفتح على العالم، قادر على المساهمة الفاعلة في مجتمعه.</p>
+            <p data-ar="جمعية شباب المنزه للرياضة والثقافة جمعية مغربية غير ربحية تأسست بهدف تقديم فضاءات عالية الجودة للشباب في <strong>حي بساتين المنزه بالرباط</strong>." data-en="Menzah Youth Association for Sports and Culture is a Moroccan non-profit founded to offer high-quality spaces for youth in the Bassatine Menzah neighborhood of Rabat.">جمعية شباب المنزه للرياضة والثقافة جمعية مغربية غير ربحية تأسست بهدف تقديم فضاءات عالية الجودة للشباب في <strong>حي بساتين المنزه بالرباط</strong>.</p>
+            <p data-ar="نؤمن إيماناً راسخاً بأن <strong>الشباب هم ركيزة المستقبل</strong>، ولذلك نعمل على تقديم برامج متنوعة تمتد من الفنون القتالية إلى الروبوتيك، مروراً بالفنون والثقافة ودعم الدراسة." data-en="We firmly believe that youth are the cornerstone of the future, which is why we offer diverse programs spanning from martial arts to robotics, arts and culture to academic support.">نؤمن إيماناً راسخاً بأن <strong>الشباب هم ركيزة المستقبل</strong>، ولذلك نعمل على تقديم برامج متنوعة تمتد من الفنون القتالية إلى الروبوتيك، مروراً بالفنون والثقافة ودعم الدراسة.</p>
+            <p data-ar="نسعى إلى بناء جيل متوازن جسدياً وفكرياً، متمسك بهويته، ومنفتح على العالم، قادر على المساهمة الفاعلة في مجتمعه." data-en="We strive to build a generation that is physically and intellectually balanced, rooted in its identity, and open to the world, capable of contributing positively to its community.">نسعى إلى بناء جيل متوازن جسدياً وفكرياً، متمسك بهويته، ومنفتح على العالم، قادر على المساهمة الفاعلة في مجتمعه.</p>
           </div>
           <div class="about-pillars reveal">
-            <div class="pillar"><span class="pillar-icon">🎯</span><div class="pillar-title">الرسالة</div><div class="pillar-desc">تنمية الشباب رياضياً وثقافياً وتقنياً في محيط محلي داعم.</div></div>
-            <div class="pillar"><span class="pillar-icon">🌟</span><div class="pillar-title">الرؤية</div><div class="pillar-desc">أن نكون مرجعاً جمعوياً في المغرب في مجال تنمية الشباب.</div></div>
-            <div class="pillar"><span class="pillar-icon">💎</span><div class="pillar-title">القيم</div><div class="pillar-desc">النزاهة والانضباط والإبداع والانتماء والتعاون.</div></div>
-            <div class="pillar"><span class="pillar-icon">🤝</span><div class="pillar-title">الشراكة</div><div class="pillar-desc">نتعاون مع دار الشباب والمؤسسات المحلية والتعليمية.</div></div>
+            <div class="pillar"><span class="pillar-icon">🎯</span><div class="pillar-title" data-ar="الرسالة" data-en="Mission">الرسالة</div><div class="pillar-desc" data-ar="تنمية الشباب رياضياً وثقافياً وتقنياً في محيط محلي داعم." data-en="Develop youth in sports, culture, and technology within a supportive local environment.">تنمية الشباب رياضياً وثقافياً وتقنياً في محيط محلي داعم.</div></div>
+            <div class="pillar"><span class="pillar-icon">🌟</span><div class="pillar-title" data-ar="الرؤية" data-en="Vision">الرؤية</div><div class="pillar-desc" data-ar="أن نكون مرجعاً جمعوياً في المغرب في مجال تنمية الشباب." data-en="To become a leading youth development association in Morocco.">أن نكون مرجعاً جمعوياً في المغرب في مجال تنمية الشباب.</div></div>
+            <div class="pillar"><span class="pillar-icon">💎</span><div class="pillar-title" data-ar="القيم" data-en="Values">القيم</div><div class="pillar-desc" data-ar="النزاهة والانضباط والإبداع والانتماء والتعاون." data-en="Integrity, discipline, creativity, belonging, and collaboration.">النزاهة والانضباط والإبداع والانتماء والتعاون.</div></div>
+            <div class="pillar"><span class="pillar-icon">🤝</span><div class="pillar-title" data-ar="الشراكة" data-en="Partnership">الشراكة</div><div class="pillar-desc" data-ar="نتعاون مع دار الشباب والمؤسسات المحلية والتعليمية." data-en="We partner with the Youth House and local educational institutions.">نتعاون مع دار الشباب والمؤسسات المحلية والتعليمية.</div></div>
           </div>
         </div>
         <div class="reveal">
           <div class="about-visual-panel">
             <div class="about-location" style="margin-bottom:32px">
-              <div class="about-location-label">موقعنا</div>
-              <div class="about-location-value">دار الشباب المنزه</div>
-              <div class="about-location-sub">بساتين المنزه، الرباط، المملكة المغربية</div>
+              <div class="about-location-label" data-ar="موقعنا" data-en="Our Location">موقعنا</div>
+              <div class="about-location-value" data-ar="دار الشباب المنزه" data-en="Menzah Youth House">دار الشباب المنزه</div>
+              <div class="about-location-sub" data-ar="بساتين المنزه، الرباط، المملكة المغربية" data-en="Bassatine Menzah, Rabat, Morocco">بساتين المنزه، الرباط، المملكة المغربية</div>
             </div>
             <div class="about-divider"></div>
             <div style="margin-bottom:28px">
-              <div class="about-location-label" style="margin-bottom:14px">تخصصاتنا</div>
+              <div class="about-location-label" style="margin-bottom:14px" data-ar="تخصصاتنا" data-en="Our Specialties">تخصصاتنا</div>
               <div class="about-disciplines">
-                <div class="discipline"><div class="discipline-dot"></div><span class="discipline-name">كراطي · تايكواندو · MMA</span></div>
-                <div class="discipline"><div class="discipline-dot" style="background:var(--gold)"></div><span class="discipline-name">كارديو للسيدات</span></div>
-                <div class="discipline"><div class="discipline-dot" style="background:#4A90D9"></div><span class="discipline-name">روبوتيك وإعلاميات</span></div>
-                <div class="discipline"><div class="discipline-dot" style="background:#7B68EE"></div><span class="discipline-name">دروس دعم في اللغات</span></div>
-                <div class="discipline"><div class="discipline-dot" style="background:var(--forest)"></div><span class="discipline-name">الثقافة والفنون</span></div>
-                <div class="discipline"><div class="discipline-dot" style="background:#FF8C69"></div><span class="discipline-name">أنشطة ترفيهية</span></div>
+                <div class="discipline"><div class="discipline-dot"></div><span class="discipline-name" data-ar="كراطي · تايكواندو · MMA" data-en="Karate · Taekwondo · MMA">كراطي · تايكواندو · MMA</span></div>
+                <div class="discipline"><div class="discipline-dot" style="background:var(--gold)"></div><span class="discipline-name" data-ar="كارديو للسيدات" data-en="Ladies Cardio">كارديو للسيدات</span></div>
+                <div class="discipline"><div class="discipline-dot" style="background:#4A90D9"></div><span class="discipline-name" data-ar="روبوتيك وإعلاميات" data-en="Robotics & IT">روبوتيك وإعلاميات</span></div>
+                <div class="discipline"><div class="discipline-dot" style="background:#7B68EE"></div><span class="discipline-name" data-ar="دروس دعم في اللغات" data-en="Language Support Classes">دروس دعم في اللغات</span></div>
+                <div class="discipline"><div class="discipline-dot" style="background:var(--forest)"></div><span class="discipline-name" data-ar="الثقافة والفنون" data-en="Culture & Arts">الثقافة والفنون</span></div>
+                <div class="discipline"><div class="discipline-dot" style="background:#FF8C69"></div><span class="discipline-name" data-ar="أنشطة ترفيهية" data-en="Recreational Activities">أنشطة ترفيهية</span></div>
               </div>
             </div>
             <div class="about-divider"></div>
-            <button class="btn-submit" onclick="showPage('register')" style="margin-top:0">انضم إلينا اليوم</button>
+            <button class="btn-submit" onclick="showPage('register')" style="margin-top:0" data-ar="انضم إلينا اليوم" data-en="Join Us Today">انضم إلينا اليوم</button>
           </div>
         </div>
       </div>
@@ -272,46 +272,46 @@
   <section style="padding-top:140px">
     <div class="section-inner">
       <div class="section-header reveal">
-        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">البرامج</span></div>
-        <h2 class="section-title">برامجنا <em>الكاملة</em></h2>
-        <p class="section-subtitle">مجموعة متنوعة من التخصصات تلبي احتياجات مختلف الفئات العمرية والاهتمامات.</p>
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text" id="pg-eyebrow">البرامج</span></div>
+        <h2 class="section-title" id="pg-title">برامجنا <em>الكاملة</em></h2>
+        <p class="section-subtitle" id="pg-sub">مجموعة متنوعة من التخصصات تلبي احتياجات مختلف الفئات العمرية والاهتمامات.</p>
       </div>
       <div class="programs-grid">
         <div class="program-card reveal reveal-delay-1">
-          <div class="program-header"><div class="program-icon prog-martial">🥋</div><div class="program-title">الكراطي</div><div class="program-subtitle">KARATE</div></div>
-          <div class="program-body"><p class="program-desc">تدريب احترافي في فن الكراطي لجميع الأعمار والمستويات. يُقام بقاعة الرياضة بدار الشباب المنزه تحت إشراف مدرب معتمد.</p><div class="program-tags"><span class="program-tag">أطفال</span><span class="program-tag">شباب</span><span class="program-tag">بطولات</span></div></div>
+          <div class="program-header"><div class="program-icon prog-martial">🥋</div><div class="program-title" id="pg1-title">الكراطي</div><div class="program-subtitle">KARATE</div></div>
+          <div class="program-body"><p class="program-desc" id="pg1-desc">تدريب احترافي في فن الكراطي لجميع الأعمار والمستويات. يُقام بقاعة الرياضة بدار الشباب المنزه تحت إشراف مدرب معتمد.</p><div class="program-tags"><span class="program-tag" data-ar="أطفال" data-en="Kids">أطفال</span><span class="program-tag" data-ar="شباب" data-en="Youth">شباب</span><span class="program-tag" data-ar="بطولات" data-en="Tournaments">بطولات</span></div></div>
         </div>
         <div class="program-card reveal reveal-delay-2">
-          <div class="program-header"><div class="program-icon prog-martial">🦵</div><div class="program-title">التايكواندو</div><div class="program-subtitle">TAEKWONDO</div></div>
-          <div class="program-body"><p class="program-desc">الرياضة الأولمبية الكورية — نكوّن رياضيين على المستوى الوطني بقاعة الرياضة بدار الشباب.</p><div class="program-tags"><span class="program-tag">أولمبيك</span><span class="program-tag">تنافسي</span><span class="program-tag">كل الأعمار</span></div></div>
+          <div class="program-header"><div class="program-icon prog-martial">🦵</div><div class="program-title" id="pg2-title">التايكواندو</div><div class="program-subtitle">TAEKWONDO</div></div>
+          <div class="program-body"><p class="program-desc" id="pg2-desc">الرياضة الأولمبية الكورية — نكوّن رياضيين على المستوى الوطني بقاعة الرياضة بدار الشباب.</p><div class="program-tags"><span class="program-tag" data-ar="أولمبيك" data-en="Olympic">أولمبيك</span><span class="program-tag" data-ar="تنافسي" data-en="Competitive">تنافسي</span><span class="program-tag" data-ar="كل الأعمار" data-en="All Ages">كل الأعمار</span></div></div>
         </div>
         <div class="program-card reveal reveal-delay-3">
-          <div class="program-header"><div class="program-icon prog-martial" style="background:#FFF0F0">🥊</div><div class="program-title">MMA</div><div class="program-subtitle">MIXED MARTIAL ARTS</div></div>
-          <div class="program-body"><p class="program-desc">الفنون القتالية المختلطة للمتقدمين. يُقام بقاعة الرياضة بدار الشباب المنزه.</p><div class="program-tags"><span class="program-tag">متقدم</span><span class="program-tag">شباب</span></div></div>
+          <div class="program-header"><div class="program-icon prog-martial" style="background:#FFF0F0">🥊</div><div class="program-title" id="pg3-title">MMA</div><div class="program-subtitle">MIXED MARTIAL ARTS</div></div>
+          <div class="program-body"><p class="program-desc" id="pg3-desc">الفنون القتالية المختلطة للمتقدمين. يُقام بقاعة الرياضة بدار الشباب المنزه.</p><div class="program-tags"><span class="program-tag" data-ar="متقدم" data-en="Advanced">متقدم</span><span class="program-tag" data-ar="شباب" data-en="Youth">شباب</span></div></div>
         </div>
         <div class="program-card reveal reveal-delay-1">
-          <div class="program-header"><div class="program-icon prog-fitness">💃</div><div class="program-title">كارديو للسيدات</div><div class="program-subtitle">LADIES CARDIO</div></div>
-          <div class="program-body"><p class="program-desc">فضاء حصري للسيدات بقاعة ملعب القرب: تمارين كارديو وأيروبيك في أجواء مريحة وآمنة.</p><div class="program-tags"><span class="program-tag">سيدات فقط</span><span class="program-tag">كارديو</span><span class="program-tag">أيروبيك</span></div></div>
+          <div class="program-header"><div class="program-icon prog-fitness">💃</div><div class="program-title" id="pg4-title">كارديو للسيدات</div><div class="program-subtitle">LADIES CARDIO</div></div>
+          <div class="program-body"><p class="program-desc" id="pg4-desc">فضاء حصري للسيدات بقاعة ملعب القرب: تمارين كارديو وأيروبيك في أجواء مريحة وآمنة.</p><div class="program-tags"><span class="program-tag" data-ar="سيدات فقط" data-en="Women Only">سيدات فقط</span><span class="program-tag" data-ar="كارديو" data-en="Cardio">كارديو</span><span class="program-tag" data-ar="أيروبيك" data-en="Aerobics">أيروبيك</span></div></div>
         </div>
         <div class="program-card reveal reveal-delay-2">
-          <div class="program-header"><div class="program-icon prog-tech">🤖</div><div class="program-title">الروبوتيك</div><div class="program-subtitle">ROBOTICS</div></div>
-          <div class="program-body"><p class="program-desc">نعلّم الأطفال والشباب بناء الروبوتات وبرمجتها. مقاربة تطبيقية ممتعة وعلمية.</p><div class="program-tags"><span class="program-tag">Arduino</span><span class="program-tag">8-16 سنة</span></div></div>
+          <div class="program-header"><div class="program-icon prog-tech">🤖</div><div class="program-title" id="pg5-title">الروبوتيك</div><div class="program-subtitle">ROBOTICS</div></div>
+          <div class="program-body"><p class="program-desc" id="pg5-desc">نعلّم الأطفال والشباب بناء الروبوتات وبرمجتها. مقاربة تطبيقية ممتعة وعلمية.</p><div class="program-tags"><span class="program-tag" data-ar="Arduino" data-en="Arduino">Arduino</span><span class="program-tag" data-ar="8-16 سنة" data-en="Ages 8-16">8-16 سنة</span></div></div>
         </div>
         <div class="program-card reveal reveal-delay-3">
-          <div class="program-header"><div class="program-icon prog-tech" style="background:#E8F0FF">💻</div><div class="program-title">الإعلاميات</div><div class="program-subtitle">COMPUTER SCIENCE</div></div>
-          <div class="program-body"><p class="program-desc">دروس برمجة وأدوات رقمية. منهجية تدريجية تناسب المبتدئين والمتوسطين.</p><div class="program-tags"><span class="program-tag">برمجة</span><span class="program-tag">Python</span><span class="program-tag">Scratch</span></div></div>
+          <div class="program-header"><div class="program-icon prog-tech" style="background:#E8F0FF">💻</div><div class="program-title" id="pg6-title">الإعلاميات</div><div class="program-subtitle">COMPUTER SCIENCE</div></div>
+          <div class="program-body"><p class="program-desc" id="pg6-desc">دروس برمجة وأدوات رقمية. منهجية تدريجية تناسب المبتدئين والمتوسطين.</p><div class="program-tags"><span class="program-tag" data-ar="برمجة" data-en="Programming">برمجة</span><span class="program-tag" data-ar="Python" data-en="Python">Python</span><span class="program-tag" data-ar="Scratch" data-en="Scratch">Scratch</span></div></div>
         </div>
         <div class="program-card reveal reveal-delay-1">
-          <div class="program-header"><div class="program-icon prog-support">📚</div><div class="program-title">دروس دعم — عربية</div><div class="program-subtitle">ARABIC SUPPORT</div></div>
-          <div class="program-body"><p class="program-desc">دروس دعم مدرسي في اللغة العربية بقاعة الدراسة، لمساعدة التلاميذ وتحسين مستواهم.</p><div class="program-tags"><span class="program-tag">عربية</span><span class="program-tag">كل المستويات</span></div></div>
+          <div class="program-header"><div class="program-icon prog-support">📚</div><div class="program-title" id="pg7-title">دروس دعم — عربية</div><div class="program-subtitle">ARABIC SUPPORT</div></div>
+          <div class="program-body"><p class="program-desc" id="pg7-desc">دروس دعم مدرسي في اللغة العربية بقاعة الدراسة، لمساعدة التلاميذ وتحسين مستواهم.</p><div class="program-tags"><span class="program-tag" data-ar="عربية" data-en="Arabic">عربية</span><span class="program-tag" data-ar="كل المستويات" data-en="All Levels">كل المستويات</span></div></div>
         </div>
         <div class="program-card reveal reveal-delay-2">
-          <div class="program-header"><div class="program-icon prog-support" style="background:#E8F4FF">🇬🇧</div><div class="program-title">دروس دعم — إنجليزية</div><div class="program-subtitle">ENGLISH SUPPORT</div></div>
-          <div class="program-body"><p class="program-desc">دروس دعم في اللغة الإنجليزية بقاعة الدراسة، مع مدرسة متخصصة لتقوية المهارات اللغوية.</p><div class="program-tags"><span class="program-tag">إنجليزية</span><span class="program-tag">كل المستويات</span></div></div>
+          <div class="program-header"><div class="program-icon prog-support" style="background:#E8F4FF">🇬🇧</div><div class="program-title" id="pg8-title">دروس دعم — إنجليزية</div><div class="program-subtitle">ENGLISH SUPPORT</div></div>
+          <div class="program-body"><p class="program-desc" id="pg8-desc">دروس دعم في اللغة الإنجليزية بقاعة الدراسة، مع مدرسة متخصصة لتقوية المهارات اللغوية.</p><div class="program-tags"><span class="program-tag" data-ar="إنجليزية" data-en="English">إنجليزية</span><span class="program-tag" data-ar="كل المستويات" data-en="All Levels">كل المستويات</span></div></div>
         </div>
         <div class="program-card reveal reveal-delay-3">
-          <div class="program-header"><div class="program-icon prog-fun">🎉</div><div class="program-title">أنشطة ترفيهية وثقافية</div><div class="program-subtitle">CULTURAL & RECREATIONAL</div></div>
-          <div class="program-body"><p class="program-desc">مسرح، فنون، رحلات ثقافية، وأحداث موسمية لتقوية روح الانتماء والروابط الاجتماعية.</p><div class="program-tags"><span class="program-tag">مسرح</span><span class="program-tag">رحلات</span><span class="program-tag">مهرجانات</span></div></div>
+          <div class="program-header"><div class="program-icon prog-fun">🎉</div><div class="program-title" id="pg9-title">أنشطة ترفيهية وثقافية</div><div class="program-subtitle">CULTURAL & RECREATIONAL</div></div>
+          <div class="program-body"><p class="program-desc" id="pg9-desc">مسرح، فنون، رحلات ثقافية، وأحداث موسمية لتقوية روح الانتماء والروابط الاجتماعية.</p><div class="program-tags"><span class="program-tag" data-ar="مسرح" data-en="Theater">مسرح</span><span class="program-tag" data-ar="رحلات" data-en="Trips">رحلات</span><span class="program-tag" data-ar="مهرجانات" data-en="Festivals">مهرجانات</span></div></div>
         </div>
       </div>
     </div>
@@ -323,51 +323,51 @@
   <section class="schedule-section" style="padding-top:140px">
     <div class="section-inner">
       <div class="section-header reveal">
-        <div class="section-eyebrow"><div class="section-eyebrow-line" style="background:var(--gold)"></div><span class="section-eyebrow-text" style="color:var(--gold)">التوقيت</span></div>
-        <h2 class="section-title">البرنامج <em>الأسبوعي</em></h2>
-        <p class="section-subtitle">استعمال الزمن التفصيلي لجميع الأنشطة والبرامج.</p>
+        <div class="section-eyebrow"><div class="section-eyebrow-line" style="background:var(--gold)"></div><span class="section-eyebrow-text" id="sch-eyebrow" style="color:var(--gold)">التوقيت</span></div>
+        <h2 class="section-title" id="sch-title">البرنامج <em>الأسبوعي</em></h2>
+        <p class="section-subtitle" id="sch-sub">استعمال الزمن التفصيلي لجميع الأنشطة والبرامج.</p>
       </div>
       <div class="schedule-filter reveal">
-        <button class="filter-btn active" onclick="filterSch('all',this)">الكل</button>
-        <button class="filter-btn" onclick="filterSch('martial',this)">🥋 فنون قتالية</button>
-        <button class="filter-btn" onclick="filterSch('fitness',this)">💪 كارديو</button>
-        <button class="filter-btn" onclick="filterSch('tech',this)">🤖 روبوتيك</button>
-        <button class="filter-btn" onclick="filterSch('support',this)">📚 دروس دعم</button>
-        <button class="filter-btn" onclick="filterSch('culture',this)">🎭 ثقافة</button>
+        <button class="filter-btn active" onclick="filterSch('all',this)" data-ar="الكل" data-en="All">الكل</button>
+        <button class="filter-btn" onclick="filterSch('martial',this)" data-ar="🥋 فنون قتالية" data-en="🥋 Martial Arts">🥋 فنون قتالية</button>
+        <button class="filter-btn" onclick="filterSch('fitness',this)" data-ar="💪 كارديو" data-en="💪 Cardio">💪 كارديو</button>
+        <button class="filter-btn" onclick="filterSch('tech',this)" data-ar="🤖 روبوتيك" data-en="🤖 Robotics">🤖 روبوتيك</button>
+        <button class="filter-btn" onclick="filterSch('support',this)" data-ar="📚 دروس دعم" data-en="📚 Academic Support">📚 دروس دعم</button>
+        <button class="filter-btn" onclick="filterSch('culture',this)" data-ar="🎭 ثقافة" data-en="🎭 Culture">🎭 ثقافة</button>
       </div>
       <div class="reveal" style="overflow-x:auto">
         <table class="schedule-table">
           <thead>
             <tr>
-              <th>اليوم</th>
-              <th>التوقيت</th>
-              <th>النشاط</th>
-              <th>الفئة</th>
-              <th>المكان</th>
+              <th data-ar="اليوم" data-en="Day">اليوم</th>
+              <th data-ar="التوقيت" data-en="Time">التوقيت</th>
+              <th data-ar="النشاط" data-en="Activity">النشاط</th>
+              <th data-ar="الفئة" data-en="Category">الفئة</th>
+              <th data-ar="المكان" data-en="Location">المكان</th>
             </tr>
           </thead>
           <tbody id="schedule-body">
             <!-- الاثنين -->
-            <tr data-cat="fitness"><td class="sch-day">الاثنين</td><td class="sch-time">17:00–18:00</td><td style="color:rgba(255,255,255,0.85)">كارديو للسيدات</td><td><span class="sch-badge sch-fitness">لياقة</span></td><td class="sch-time">قاعة ملعب القرب</td></tr>
-            <tr data-cat="martial"><td class="sch-day">الاثنين</td><td class="sch-time">18:00–19:00</td><td style="color:rgba(255,255,255,0.85)">MMA</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة الرياضة — دار الشباب</td></tr>
+            <tr data-cat="fitness"><td class="sch-day" data-ar="الاثنين" data-en="Monday">الاثنين</td><td class="sch-time">17:00–18:00</td><td data-ar="كارديو للسيدات" data-en="Ladies Cardio">كارديو للسيدات</td><td><span class="sch-badge sch-fitness" data-ar="لياقة" data-en="Fitness">لياقة</span></td><td class="sch-time" data-ar="قاعة ملعب القرب" data-en="Neighborhood Gym Hall">قاعة ملعب القرب</td></tr>
+            <tr data-cat="martial"><td class="sch-day" data-ar="الاثنين" data-en="Monday">الاثنين</td><td class="sch-time">18:00–19:00</td><td data-ar="MMA" data-en="MMA">MMA</td><td><span class="sch-badge sch-martial" data-ar="فنون قتالية" data-en="Martial Arts">فنون قتالية</span></td><td class="sch-time" data-ar="قاعة الرياضة — دار الشباب" data-en="Sports Hall — Youth House">قاعة الرياضة — دار الشباب</td></tr>
             <!-- الثلاثاء -->
-            <tr data-cat="martial"><td class="sch-day">الثلاثاء</td><td class="sch-time">18:00–19:30</td><td style="color:rgba(255,255,255,0.85)">كراطي وأساليب مشتركة</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة الرياضة — دار الشباب</td></tr>
+            <tr data-cat="martial"><td class="sch-day" data-ar="الثلاثاء" data-en="Tuesday">الثلاثاء</td><td class="sch-time">18:00–19:30</td><td data-ar="كراطي وأساليب مشتركة" data-en="Karate & Mixed Styles">كراطي وأساليب مشتركة</td><td><span class="sch-badge sch-martial" data-ar="فنون قتالية" data-en="Martial Arts">فنون قتالية</span></td><td class="sch-time" data-ar="قاعة الرياضة — دار الشباب" data-en="Sports Hall — Youth House">قاعة الرياضة — دار الشباب</td></tr>
             <!-- الأربعاء -->
-            <tr data-cat="fitness"><td class="sch-day">الأربعاء</td><td class="sch-time">17:00–18:00</td><td style="color:rgba(255,255,255,0.85)">كارديو للسيدات</td><td><span class="sch-badge sch-fitness">لياقة</span></td><td class="sch-time">قاعة ملعب القرب</td></tr>
-            <tr data-cat="martial"><td class="sch-day">الأربعاء</td><td class="sch-time">18:00–19:00</td><td style="color:rgba(255,255,255,0.85)">MMA</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة الرياضة — دار الشباب</td></tr>
-            <tr data-cat="tech"><td class="sch-day">الأربعاء</td><td class="sch-time">17:30–19:00</td><td style="color:rgba(255,255,255,0.85)">إعلاميات</td><td><span class="sch-badge sch-tech">تكنولوجيا</span></td><td class="sch-time">قاعة الإعلاميات</td></tr>
+            <tr data-cat="fitness"><td class="sch-day" data-ar="الأربعاء" data-en="Wednesday">الأربعاء</td><td class="sch-time">17:00–18:00</td><td data-ar="كارديو للسيدات" data-en="Ladies Cardio">كارديو للسيدات</td><td><span class="sch-badge sch-fitness" data-ar="لياقة" data-en="Fitness">لياقة</span></td><td class="sch-time" data-ar="قاعة ملعب القرب" data-en="Neighborhood Gym Hall">قاعة ملعب القرب</td></tr>
+            <tr data-cat="martial"><td class="sch-day" data-ar="الأربعاء" data-en="Wednesday">الأربعاء</td><td class="sch-time">18:00–19:00</td><td data-ar="MMA" data-en="MMA">MMA</td><td><span class="sch-badge sch-martial" data-ar="فنون قتالية" data-en="Martial Arts">فنون قتالية</span></td><td class="sch-time" data-ar="قاعة الرياضة — دار الشباب" data-en="Sports Hall — Youth House">قاعة الرياضة — دار الشباب</td></tr>
+            <tr data-cat="tech"><td class="sch-day" data-ar="الأربعاء" data-en="Wednesday">الأربعاء</td><td class="sch-time">17:30–19:00</td><td data-ar="إعلاميات" data-en="Computer Science">إعلاميات</td><td><span class="sch-badge sch-tech" data-ar="تكنولوجيا" data-en="Technology">تكنولوجيا</span></td><td class="sch-time" data-ar="قاعة الإعلاميات" data-en="Computer Lab">قاعة الإعلاميات</td></tr>
             <!-- الخميس -->
-            <tr data-cat="martial"><td class="sch-day">الخميس</td><td class="sch-time">18:00–19:30</td><td style="color:rgba(255,255,255,0.85)">كراطي وأساليب مشتركة</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة الرياضة — دار الشباب</td></tr>
-            <tr data-cat="support"><td class="sch-day">الخميس</td><td class="sch-time">16:00–17:30</td><td style="color:rgba(255,255,255,0.85)">دروس دعم — إنجليزية</td><td><span class="sch-badge sch-support">دروس دعم</span></td><td class="sch-time">قاعة الدراسة</td></tr>
+            <tr data-cat="martial"><td class="sch-day" data-ar="الخميس" data-en="Thursday">الخميس</td><td class="sch-time">18:00–19:30</td><td data-ar="كراطي وأساليب مشتركة" data-en="Karate & Mixed Styles">كراطي وأساليب مشتركة</td><td><span class="sch-badge sch-martial" data-ar="فنون قتالية" data-en="Martial Arts">فنون قتالية</span></td><td class="sch-time" data-ar="قاعة الرياضة — دار الشباب" data-en="Sports Hall — Youth House">قاعة الرياضة — دار الشباب</td></tr>
+            <tr data-cat="support"><td class="sch-day" data-ar="الخميس" data-en="Thursday">الخميس</td><td class="sch-time">16:00–17:30</td><td data-ar="دروس دعم — إنجليزية" data-en="English Support Classes">دروس دعم — إنجليزية</td><td><span class="sch-badge sch-support" data-ar="دروس دعم" data-en="Academic Support">دروس دعم</span></td><td class="sch-time" data-ar="قاعة الدراسة" data-en="Study Room">قاعة الدراسة</td></tr>
             <!-- الجمعة -->
-            <tr data-cat="fitness"><td class="sch-day">الجمعة</td><td class="sch-time">17:00–18:00</td><td style="color:rgba(255,255,255,0.85)">كارديو للسيدات</td><td><span class="sch-badge sch-fitness">لياقة</span></td><td class="sch-time">قاعة ملعب القرب</td></tr>
-            <tr data-cat="martial"><td class="sch-day">الجمعة</td><td class="sch-time">18:00–19:00</td><td style="color:rgba(255,255,255,0.85)">MMA</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة الرياضة — دار الشباب</td></tr>
-            <tr data-cat="tech"><td class="sch-day">الجمعة</td><td class="sch-time">17:30–19:00</td><td style="color:rgba(255,255,255,0.85)">إعلاميات</td><td><span class="sch-badge sch-tech">تكنولوجيا</span></td><td class="sch-time">قاعة الإعلاميات</td></tr>
+            <tr data-cat="fitness"><td class="sch-day" data-ar="الجمعة" data-en="Friday">الجمعة</td><td class="sch-time">17:00–18:00</td><td data-ar="كارديو للسيدات" data-en="Ladies Cardio">كارديو للسيدات</td><td><span class="sch-badge sch-fitness" data-ar="لياقة" data-en="Fitness">لياقة</span></td><td class="sch-time" data-ar="قاعة ملعب القرب" data-en="Neighborhood Gym Hall">قاعة ملعب القرب</td></tr>
+            <tr data-cat="martial"><td class="sch-day" data-ar="الجمعة" data-en="Friday">الجمعة</td><td class="sch-time">18:00–19:00</td><td data-ar="MMA" data-en="MMA">MMA</td><td><span class="sch-badge sch-martial" data-ar="فنون قتالية" data-en="Martial Arts">فنون قتالية</span></td><td class="sch-time" data-ar="قاعة الرياضة — دار الشباب" data-en="Sports Hall — Youth House">قاعة الرياضة — دار الشباب</td></tr>
+            <tr data-cat="tech"><td class="sch-day" data-ar="الجمعة" data-en="Friday">الجمعة</td><td class="sch-time">17:30–19:00</td><td data-ar="إعلاميات" data-en="Computer Science">إعلاميات</td><td><span class="sch-badge sch-tech" data-ar="تكنولوجيا" data-en="Technology">تكنولوجيا</span></td><td class="sch-time" data-ar="قاعة الإعلاميات" data-en="Computer Lab">قاعة الإعلاميات</td></tr>
             <!-- السبت -->
-            <tr data-cat="martial"><td class="sch-day">السبت</td><td class="sch-time">18:00–19:30</td><td style="color:rgba(255,255,255,0.85)">كراطي وأساليب مشتركة</td><td><span class="sch-badge sch-martial">فنون قتالية</span></td><td class="sch-time">قاعة الرياضة — دار الشباب</td></tr>
-            <tr data-cat="support"><td class="sch-day">السبت</td><td class="sch-time">16:00–17:30</td><td style="color:rgba(255,255,255,0.85)">دروس دعم — عربية</td><td><span class="sch-badge sch-support">دروس دعم</span></td><td class="sch-time">قاعة الدراسة</td></tr>
+            <tr data-cat="martial"><td class="sch-day" data-ar="السبت" data-en="Saturday">السبت</td><td class="sch-time">18:00–19:30</td><td data-ar="كراطي وأساليب مشتركة" data-en="Karate & Mixed Styles">كراطي وأساليب مشتركة</td><td><span class="sch-badge sch-martial" data-ar="فنون قتالية" data-en="Martial Arts">فنون قتالية</span></td><td class="sch-time" data-ar="قاعة الرياضة — دار الشباب" data-en="Sports Hall — Youth House">قاعة الرياضة — دار الشباب</td></tr>
+            <tr data-cat="support"><td class="sch-day" data-ar="السبت" data-en="Saturday">السبت</td><td class="sch-time">16:00–17:30</td><td data-ar="دروس دعم — عربية" data-en="Arabic Support Classes">دروس دعم — عربية</td><td><span class="sch-badge sch-support" data-ar="دروس دعم" data-en="Academic Support">دروس دعم</span></td><td class="sch-time" data-ar="قاعة الدراسة" data-en="Study Room">قاعة الدراسة</td></tr>
             <!-- الأحد -->
-            <tr data-cat="culture"><td class="sch-day">الأحد</td><td class="sch-time">12:00 فما فوق</td><td style="color:rgba(255,255,255,0.85)">أنشطة ثقافية وترفيهية</td><td><span class="sch-badge sch-culture">ثقافة وترفيه</span></td><td class="sch-time">فضاء مفتوح</td></tr>
+            <tr data-cat="culture"><td class="sch-day" data-ar="الأحد" data-en="Sunday">الأحد</td><td class="sch-time">12:00 فما فوق</td><td data-ar="أنشطة ثقافية وترفيهية" data-en="Cultural & Recreational Activities">أنشطة ثقافية وترفيهية</td><td><span class="sch-badge sch-culture" data-ar="ثقافة وترفيه" data-en="Culture & Recreation">ثقافة وترفيه</span></td><td class="sch-time" data-ar="فضاء مفتوح" data-en="Open Space">فضاء مفتوح</td></tr>
           </tbody>
         </table>
       </div>
@@ -380,46 +380,70 @@
   <section style="padding-top:140px">
     <div class="section-inner">
       <div class="section-header reveal">
-        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">الفريق</span></div>
-        <h2 class="section-title">الأشخاص <em>خلف</em> الجمعية</h2>
-        <p class="section-subtitle">فريق متخصص ومتحمس يعمل بشغف من أجل شباب المنزه كل يوم.</p>
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text" id="team-eyebrow">الفريق</span></div>
+        <h2 class="section-title" id="team-title">الأشخاص <em>خلف</em> الجمعية</h2>
+        <p class="section-subtitle" id="team-sub">فريق متخصص ومتحمس يعمل بشغف من أجل شباب المنزه كل يوم.</p>
       </div>
       <div class="team-grid">
         <div class="team-card reveal reveal-delay-1">
-          <div class="team-avatar-wrap"><div class="team-avatar av1">ع</div><div class="team-badge">🥋</div></div>
-          <div class="team-name">عبدالإله المنصوري</div>
-          <div class="team-role">مدرب الفنون القتالية</div>
-          <p class="team-bio">مدرب معتمد في الكراطي والتايكواندو والـ MMA، يسهر على تكوين الرياضيين وتطوير مستواهم.</p>
+          <div class="team-avatar-wrap">
+            <img class="team-photo" src="A.jpg" alt="عبدالإله المنصوري" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="team-avatar av1" style="display:none">ع</div>
+            <div class="team-badge">🥋</div>
+          </div>
+          <div class="team-name" id="tm1-name">عبدالإله المنصوري</div>
+          <div class="team-role" id="tm1-role">مدرب الفنون القتالية</div>
+          <p class="team-bio" id="tm1-bio">مدرب معتمد في الكراطي والتايكواندو والـ MMA، يسهر على تكوين الرياضيين وتطوير مستواهم.</p>
         </div>
         <div class="team-card reveal reveal-delay-2">
-          <div class="team-avatar-wrap"><div class="team-avatar av2">م</div><div class="team-badge">🤖</div></div>
-          <div class="team-name">محمد الشوداني</div>
-          <div class="team-role">مدرس الإعلاميات والروبوتيك</div>
-          <p class="team-bio">مختص في البرمجة والروبوتيك، يعلّم الأطفال والشباب أسرار التكنولوجيا بأسلوب ممتع وتطبيقي.</p>
+          <div class="team-avatar-wrap">
+            <img class="team-photo" src="B.jpg" alt="محمد الشوداني" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="team-avatar av2" style="display:none">م</div>
+            <div class="team-badge">🤖</div>
+          </div>
+          <div class="team-name" id="tm2-name">محمد الشوداني</div>
+          <div class="team-role" id="tm2-role">مدرس الإعلاميات والروبوتيك</div>
+          <p class="team-bio" id="tm2-bio">مختص في البرمجة والروبوتيك، يعلّم الأطفال والشباب أسرار التكنولوجيا بأسلوب ممتع وتطبيقي.</p>
         </div>
         <div class="team-card reveal reveal-delay-3">
-          <div class="team-avatar-wrap"><div class="team-avatar av3">ح</div><div class="team-badge">📚</div></div>
-          <div class="team-name">حليمة الشوداني</div>
-          <div class="team-role">مدرسة اللغة العربية</div>
-          <p class="team-bio">أستاذة متخصصة في تدريس اللغة العربية وتقوية المستوى الدراسي للتلاميذ.</p>
+          <div class="team-avatar-wrap">
+            <img class="team-photo" src="C.jpg" alt="حليمة الشوداني" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="team-avatar av3" style="display:none">ح</div>
+            <div class="team-badge">📚</div>
+          </div>
+          <div class="team-name" id="tm3-name">حليمة الشوداني</div>
+          <div class="team-role" id="tm3-role">مدرسة اللغة العربية</div>
+          <p class="team-bio" id="tm3-bio">أستاذة متخصصة في تدريس اللغة العربية وتقوية المستوى الدراسي للتلاميذ.</p>
         </div>
         <div class="team-card reveal reveal-delay-1">
-          <div class="team-avatar-wrap"><div class="team-avatar av4">خ</div><div class="team-badge">🇬🇧</div></div>
-          <div class="team-name">السيدة خولة</div>
-          <div class="team-role">مدرسة اللغة الإنجليزية</div>
-          <p class="team-bio">متخصصة في تعليم اللغة الإنجليزية، تساعد التلاميذ على اكتساب مهارات التواصل والتفوق الدراسي.</p>
+          <div class="team-avatar-wrap">
+            <img class="team-photo" src="D.jpg" alt="السيدة خولة" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="team-avatar av4" style="display:none">خ</div>
+            <div class="team-badge">🇬🇧</div>
+          </div>
+          <div class="team-name" id="tm4-name">السيدة خولة</div>
+          <div class="team-role" id="tm4-role">مدرسة اللغة الإنجليزية</div>
+          <p class="team-bio" id="tm4-bio">متخصصة في تعليم اللغة الإنجليزية، تساعد التلاميذ على اكتساب مهارات التواصل والتفوق الدراسي.</p>
         </div>
         <div class="team-card reveal reveal-delay-2">
-          <div class="team-avatar-wrap"><div class="team-avatar av5">س</div><div class="team-badge">🎉</div></div>
-          <div class="team-name">سعيد الجوهري</div>
-          <div class="team-role">منشط ترفيهي</div>
-          <p class="team-bio">منشط متمرس يخلق أجواءً مرحة وتفاعلية في الأنشطة الترفيهية والرحلات والمهرجانات.</p>
+          <div class="team-avatar-wrap">
+            <img class="team-photo" src="E.jpg" alt="سعيد الجوهري" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="team-avatar av5" style="display:none">س</div>
+            <div class="team-badge">🎉</div>
+          </div>
+          <div class="team-name" id="tm5-name">سعيد الجوهري</div>
+          <div class="team-role" id="tm5-role">منشط ترفيهي</div>
+          <p class="team-bio" id="tm5-bio">منشط متمرس يخلق أجواءً مرحة وتفاعلية في الأنشطة الترفيهية والرحلات والمهرجانات.</p>
         </div>
         <div class="team-card reveal reveal-delay-3">
-          <div class="team-avatar-wrap"><div class="team-avatar av6">م</div><div class="team-badge">🎭</div></div>
-          <div class="team-name">محمد المنصوري</div>
-          <div class="team-role">منشط ثقافي</div>
-          <p class="team-bio">مسؤول الأنشطة الثقافية والفنية، يسهر على إغناء البرنامج الثقافي للجمعية وتنمية مواهب الشباب.</p>
+          <div class="team-avatar-wrap">
+            <img class="team-photo" src="F.jpg" alt="محمد المنصوري" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="team-avatar av6" style="display:none">م</div>
+            <div class="team-badge">🎭</div>
+          </div>
+          <div class="team-name" id="tm6-name">محمد المنصوري</div>
+          <div class="team-role" id="tm6-role">منشط ثقافي</div>
+          <p class="team-bio" id="tm6-bio">مسؤول الأنشطة الثقافية والفنية، يسهر على إغناء البرنامج الثقافي للجمعية وتنمية مواهب الشباب.</p>
         </div>
       </div>
     </div>
@@ -433,11 +457,11 @@
       <div class="donation-inner reveal">
         <div class="section-eyebrow" style="justify-content:center;margin-bottom:20px">
           <div class="section-eyebrow-line" style="background:var(--gold)"></div>
-          <span class="section-eyebrow-text" style="color:var(--gold)">ادعمنا</span>
+          <span class="section-eyebrow-text" style="color:var(--gold)" id="donate-eyebrow">ادعمنا</span>
           <div class="section-eyebrow-line" style="background:var(--gold)"></div>
         </div>
-        <h2 class="donation-title">ساهم في بناء <em>مستقبل</em> شبابنا</h2>
-        <p class="donation-subtitle">تبرعك يساعدنا على توفير معدات أفضل، تنظيم أنشطة أكثر، ومنح الشباب فرصاً حقيقية للتطور. كل درهم يُحدث فارقاً.</p>
+        <h2 class="donation-title" id="donate-title">ساهم في بناء <em>مستقبل</em> شبابنا</h2>
+        <p class="donation-subtitle" id="donate-sub">تبرعك يساعدنا على توفير معدات أفضل، تنظيم أنشطة أكثر، ومنح الشباب فرصاً حقيقية للتطور. كل درهم يُحدث فارقاً.</p>
 
         <!-- طرق التبرع -->
         <div class="donate-methods">
@@ -447,14 +471,14 @@
             <div class="donate-method-header">
               <div class="donate-method-icon">🏦</div>
               <div>
-                <div class="donate-method-title">تحويل بنكي مباشر</div>
-                <div class="donate-method-sub">CIH Bank — تحويل آمن ومباشر</div>
+                <div class="donate-method-title" id="donate-bank-title">تحويل بنكي مباشر</div>
+                <div class="donate-method-sub" id="donate-bank-sub">CIH Bank — تحويل آمن ومباشر</div>
               </div>
             </div>
             <div class="donate-rib-box">
-              <div class="donate-rib-label">رقم الحساب البنكي (RIB)</div>
+              <div class="donate-rib-label" data-ar="رقم الحساب البنكي (RIB)" data-en="Bank Account Number (RIB)">رقم الحساب البنكي (RIB)</div>
               <div class="donate-rib-number" id="rib-number" dir="ltr">230810272879621100550096</div>
-              <button class="donate-copy-btn" onclick="copyRIB()" id="copy-btn">
+              <button class="donate-copy-btn" onclick="copyRIB()" id="copy-btn" data-ar="نسخ الرقم" data-en="Copy Number">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
                 نسخ الرقم
               </button>
@@ -477,28 +501,28 @@
             <div class="donate-method-header">
               <div class="donate-method-icon" style="background:rgba(255,180,0,0.15)">🟡</div>
               <div>
-                <div class="donate-method-title">تحويل عبر البريد بنك</div>
-                <div class="donate-method-sub">Al Barid Bank — تحويل آمن ومباشر</div>
+                <div class="donate-method-title" id="donate-barid-title">تحويل عبر البريد بنك</div>
+                <div class="donate-method-sub" id="donate-barid-sub">Al Barid Bank — تحويل آمن ومباشر</div>
               </div>
             </div>
             <div class="donate-rib-box">
-              <div class="donate-rib-label">رقم الحساب البنكي (RIB)</div>
+              <div class="donate-rib-label" data-ar="رقم الحساب البنكي (RIB)" data-en="Bank Account Number (RIB)">رقم الحساب البنكي (RIB)</div>
               <div class="donate-rib-number" id="rib-barid" dir="ltr">350810000000001372164986</div>
-              <button class="donate-copy-btn" onclick="copyRIB2()" id="copy-btn-barid">
+              <button class="donate-copy-btn" onclick="copyRIB2()" id="copy-btn-barid" data-ar="نسخ الرقم" data-en="Copy Number">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
                 نسخ الرقم
               </button>
             </div>
             <div class="donate-rib-info">
-              <div class="donate-rib-row"><span class="donate-rib-key">اسم المستفيد</span><span class="donate-rib-val">Abdelilah EL MANSOURI</span></div>
-              <div class="donate-rib-row"><span class="donate-rib-key">البنك</span><span class="donate-rib-val">Al Barid Bank</span></div>
-              <div class="donate-rib-row"><span class="donate-rib-key">ملاحظة التحويل</span><span class="donate-rib-val">تبرع — جمعية شباب المنزه</span></div>
+              <div class="donate-rib-row"><span class="donate-rib-key" data-ar="اسم المستفيد" data-en="Beneficiary">اسم المستفيد</span><span class="donate-rib-val">Abdelilah EL MANSOURI</span></div>
+              <div class="donate-rib-row"><span class="donate-rib-key" data-ar="البنك" data-en="Bank">البنك</span><span class="donate-rib-val">Al Barid Bank</span></div>
+              <div class="donate-rib-row"><span class="donate-rib-key" data-ar="ملاحظة التحويل" data-en="Transfer Note">ملاحظة التحويل</span><span class="donate-rib-val" data-ar="تبرع — جمعية شباب المنزه" data-en="Donation — Menzah Youth Association">تبرع — جمعية شباب المنزه</span></div>
             </div>
             <div class="donate-rib-steps">
-              <div class="donate-step"><span class="donate-step-num">1</span><span>افتح تطبيق Barid Cash أو أي بنك آخر</span></div>
-              <div class="donate-step"><span class="donate-step-num">2</span><span>اختر "تحويل بنكي" وأدخل الـ RIB أعلاه</span></div>
-              <div class="donate-step"><span class="donate-step-num">3</span><span>أدخل المبلغ الذي تريد التبرع به</span></div>
-              <div class="donate-step"><span class="donate-step-num">4</span><span>في خانة الملاحظة: اكتب "تبرع جمعية شباب المنزه"</span></div>
+              <div class="donate-step"><span class="donate-step-num">1</span><span data-ar="افتح تطبيق Barid Cash أو أي بنك آخر" data-en="Open the Barid Cash app or another bank app">افتح تطبيق Barid Cash أو أي بنك آخر</span></div>
+              <div class="donate-step"><span class="donate-step-num">2</span><span data-ar="اختر \"تحويل بنكي\" وأدخل الـ RIB أعلاه" data-en="Choose 'Bank Transfer' and enter the RIB above">اختر "تحويل بنكي" وأدخل الـ RIB أعلاه</span></div>
+              <div class="donate-step"><span class="donate-step-num">3</span><span data-ar="أدخل المبلغ الذي تريد التبرع به" data-en="Enter the amount you want to donate">أدخل المبلغ الذي تريد التبرع به</span></div>
+              <div class="donate-step"><span class="donate-step-num">4</span><span data-ar="في خانة الملاحظة: اكتب \"تبرع جمعية شباب المنزه\"" data-en="In the note field: write 'Donation Menzah Youth Association'">في خانة الملاحظة: اكتب "تبرع جمعية شباب المنزه"</span></div>
             </div>
           </div>
 
@@ -509,17 +533,17 @@
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               </div>
               <div>
-                <div class="donate-method-title">تبرع عبر واتساب</div>
-                <div class="donate-method-sub">تواصل معنا مباشرة لإتمام التبرع</div>
+                <div class="donate-method-title" id="donate-wa-title">تبرع عبر واتساب</div>
+                <div class="donate-method-sub" id="donate-wa-sub">تواصل معنا مباشرة لإتمام التبرع</div>
               </div>
             </div>
             <div class="donation-amounts" style="margin:20px 0 16px">
-              <button class="donation-amount-btn" data-amount="50" onclick="selectAmount(this)">50 درهم</button>
-              <button class="donation-amount-btn selected" data-amount="100" onclick="selectAmount(this)">100 درهم</button>
-              <button class="donation-amount-btn" data-amount="200" onclick="selectAmount(this)">200 درهم</button>
-              <button class="donation-amount-btn" data-amount="500" onclick="selectAmount(this)">500 درهم</button>
+              <button class="donation-amount-btn" data-amount="50" onclick="selectAmount(this)" data-ar="50 درهم" data-en="50 MAD">50 درهم</button>
+              <button class="donation-amount-btn selected" data-amount="100" onclick="selectAmount(this)" data-ar="100 درهم" data-en="100 MAD">100 درهم</button>
+              <button class="donation-amount-btn" data-amount="200" onclick="selectAmount(this)" data-ar="200 درهم" data-en="200 MAD">200 درهم</button>
+              <button class="donation-amount-btn" data-amount="500" onclick="selectAmount(this)" data-ar="500 درهم" data-en="500 MAD">500 درهم</button>
             </div>
-            <button class="donation-whatsapp" onclick="donateWhatsApp()" style="margin:0">
+            <button class="donation-whatsapp" onclick="donateWhatsApp()" style="margin:0" id="donation-wa-button" data-ar="تواصل عبر واتساب" data-en="Contact via WhatsApp">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               تواصل عبر واتساب
             </button>
@@ -527,7 +551,7 @@
 
         </div>
 
-        <p class="donation-note">🔒 جميع التبرعات تُستخدم بشكل مباشر لدعم أنشطة وبرامج الجمعية. شكراً على كرمك! 🙏</p>
+        <p class="donation-note" id="donation-note" data-ar="🔒 جميع التبرعات تُستخدم بشكل مباشر لدعم أنشطة وبرامج الجمعية. شكراً على كرمك! 🙏" data-en="🔒 All donations are used directly to support association activities and programs. Thank you for your generosity! 🙏">🔒 جميع التبرعات تُستخدم بشكل مباشر لدعم أنشطة وبرامج الجمعية. شكراً على كرمك! 🙏</p>
       </div>
     </div>
   </section>
@@ -539,18 +563,18 @@
     <div class="section-inner">
       <div class="registration-grid">
         <div class="reveal">
-          <div class="section-eyebrow" style="margin-bottom:16px"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">الانخراط</span></div>
+          <div class="section-eyebrow" style="margin-bottom:16px"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text" id="reg-eyebrow">الانخراط</span></div>
           <div class="registration-intro">
-            <h2>انضم إلى <em>عائلة</em><br>شباب المنزه</h2>
-            <p>سجّل الآن واستفد من جميع برامجنا. الأبواب مفتوحة للجميع!</p>
+            <h2 id="reg-title">انضم إلى <em>عائلة</em><br>شباب المنزه</h2>
+            <p id="reg-sub">سجّل الآن واستفد من جميع برامجنا. الأبواب مفتوحة للجميع!</p>
           </div>
           <ul class="reg-benefits">
-            <li><div class="reg-benefit-check">✓</div><span>الوصول لجميع البرامج الرياضية والثقافية</span></li>
-            <li><div class="reg-benefit-check">✓</div><span>تدريب في الفنون القتالية مع مدرب معتمد</span></li>
-            <li><div class="reg-benefit-check">✓</div><span>دروس روبوتيك وإعلاميات بمعدات متطورة</span></li>
-            <li><div class="reg-benefit-check">✓</div><span>دعم مدرسي في العربية والإنجليزية</span></li>
-            <li><div class="reg-benefit-check">✓</div><span>المشاركة في الرحلات والمهرجانات</span></li>
-            <li><div class="reg-benefit-check">✓</div><span>فضاء آمن بدار الشباب المنزه — بساتين المنزه</span></li>
+            <li><div class="reg-benefit-check">✓</div><span data-ar="الوصول لجميع البرامج الرياضية والثقافية" data-en="Access all sports and cultural programs">الوصول لجميع البرامج الرياضية والثقافية</span></li>
+            <li><div class="reg-benefit-check">✓</div><span data-ar="تدريب في الفنون القتالية مع مدرب معتمد" data-en="Train in martial arts with a certified coach">تدريب في الفنون القتالية مع مدرب معتمد</span></li>
+            <li><div class="reg-benefit-check">✓</div><span data-ar="دروس روبوتيك وإعلاميات بمعدات متطورة" data_en="Robotics and IT lessons with advanced equipment">دروس روبوتيك وإعلاميات بمعدات متطورة</span></li>
+            <li><div class="reg-benefit-check">✓</div><span data-ar="دعم مدرسي في العربية والإنجليزية" data-en="Academic support in Arabic and English">دعم مدرسي في العربية والإنجليزية</span></li>
+            <li><div class="reg-benefit-check">✓</div><span data-ar="المشاركة في الرحلات والمهرجانات" data-en="Participation in trips and festivals">المشاركة في الرحلات والمهرجانات</span></li>
+            <li><div class="reg-benefit-check">✓</div><span data-ar="فضاء آمن بدار الشباب المنزه — بساتين المنزه" data-en="A safe space at Menzah Youth House — Bassatine Menzah">فضاء آمن بدار الشباب المنزه — بساتين المنزه</span></li>
           </ul>
         </div>
         <div class="reveal">
@@ -564,89 +588,89 @@
               
 
               <!-- معلومات المنخرط -->
-              <div class="form-section-title">معلومات المنخرط</div>
+              <div class="form-section-title" id="reg-form-section">معلومات المنخرط</div>
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label">الاسم الكامل <span>*</span></label>
-                  <input type="text" name="الاسم الكامل" class="form-input" placeholder="الاسم الكامل" required>
+                  <label class="form-label" data-ar="الاسم الكامل <span>*</span>" data-en="Full Name <span>*</span>">الاسم الكامل <span>*</span></label>
+                  <input type="text" name="الاسم الكامل" class="form-input" placeholder="الاسم الكامل" data-ar-placeholder="الاسم الكامل" data-en-placeholder="Full Name" required>
                 </div>
                 <div class="form-group">
-                  <label class="form-label">الجنس <span>*</span></label>
+                  <label class="form-label" data-ar="الجنس <span>*</span>" data-en="Gender <span>*</span>">الجنس <span>*</span></label>
                   <select name="الجنس" class="form-input form-select" required>
-                    <option value="">اختر...</option>
-                    <option>ذكر</option>
-                    <option>أنثى</option>
+                    <option value="" data-ar="اختر..." data-en="Choose...">اختر...</option>
+                    <option data-ar="ذكر" data-en="Male">ذكر</option>
+                    <option data-ar="أنثى" data-en="Female">أنثى</option>
                   </select>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label">تاريخ الازدياد <span>*</span></label>
+                  <label class="form-label" data-ar="تاريخ الازدياد <span>*</span>" data-en="Date of Birth <span>*</span>">تاريخ الازدياد <span>*</span></label>
                   <input type="date" id="reg-dob" name="تاريخ الازدياد" class="form-input" onchange="checkAge()" required>
                 </div>
                 <div class="form-group">
-                  <label class="form-label">العمر</label>
-                  <input type="number" name="العمر" class="form-input" placeholder="العمر بالسنوات" min="4" max="80">
+                  <label class="form-label" data-ar="العمر" data-en="Age">العمر</label>
+                  <input type="number" name="العمر" class="form-input" placeholder="العمر بالسنوات" data-ar-placeholder="العمر بالسنوات" data-en-placeholder="Age in years" min="4" max="80">
                 </div>
               </div>
               <div class="form-group">
-                <label class="form-label">المستوى الدراسي <span>*</span></label>
+                <label class="form-label" data-ar="المستوى الدراسي <span>*</span>" data-en="Education Level <span>*</span>">المستوى الدراسي <span>*</span></label>
                 <select name="المستوى الدراسي" class="form-input form-select" required>
-                  <option value="">اختر المستوى...</option>
-                  <option>تحضيري / روضة</option>
-                  <option>ابتدائي — المستوى 1-3</option>
-                  <option>ابتدائي — المستوى 4-6</option>
-                  <option>إعدادي</option>
-                  <option>ثانوي</option>
-                  <option>جامعي</option>
-                  <option>متخرج / عامل</option>
+                  <option value="" data-ar="اختر المستوى..." data-en="Choose a level...">اختر المستوى...</option>
+                  <option data-ar="تحضيري / روضة" data-en="Preschool / Kindergarten">تحضيري / روضة</option>
+                  <option data-ar="ابتدائي — المستوى 1-3" data-en="Primary — Grades 1-3">ابتدائي — المستوى 1-3</option>
+                  <option data-ar="ابتدائي — المستوى 4-6" data-en="Primary — Grades 4-6">ابتدائي — المستوى 4-6</option>
+                  <option data-ar="إعدادي" data-en="Middle School">إعدادي</option>
+                  <option data-ar="ثانوي" data-en="High School">ثانوي</option>
+                  <option data-ar="جامعي" data-en="University">جامعي</option>
+                  <option data-ar="متخرج / عامل" data-en="Graduate / Worker">متخرج / عامل</option>
                 </select>
               </div>
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label">رقم الهاتف <span>*</span></label>
-                  <input type="tel" name="رقم الهاتف" class="form-input" placeholder="+212 6XX-XXXXXX" dir="ltr" required>
+                  <label class="form-label" data-ar="رقم الهاتف <span>*</span>" data-en="Phone Number <span>*</span>">رقم الهاتف <span>*</span></label>
+                  <input type="tel" name="رقم الهاتف" class="form-input" placeholder="+212 6XX-XXXXXX" data-ar-placeholder="+212 6XX-XXXXXX" data-en-placeholder="+212 6XX-XXXXXX" dir="ltr" required>
                 </div>
                 <div class="form-group">
-                  <label class="form-label">البريد الإلكتروني</label>
-                  <input type="email" name="email" class="form-input" placeholder="email@example.com" dir="ltr">
+                  <label class="form-label" data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
+                  <input type="email" name="email" class="form-input" placeholder="email@example.com" data-ar-placeholder="email@example.com" data-en-placeholder="email@example.com" dir="ltr">
                 </div>
               </div>
 
               <!-- قسم ولي الأمر (يظهر للقاصرين) -->
               <div class="guardian-section" id="guardian-section">
-                <div class="guardian-note">⚠️ المنخرط قاصر — يُرجى ملء معلومات ولي الأمر</div>
-                <div class="form-section-title" style="margin-top:0">معلومات ولي الأمر</div>
+                <div class="guardian-note" id="guardian-note" data-ar="⚠️ المنخرط قاصر — يُرجى ملء معلومات ولي الأمر" data-en="⚠️ The registrant is a minor — please fill in guardian information">⚠️ المنخرط قاصر — يُرجى ملء معلومات ولي الأمر</div>
+                <div class="form-section-title" style="margin-top:0" id="guardian-title">معلومات ولي الأمر</div>
                 <div class="form-group">
-                  <label class="form-label">اسم ولي الأمر الكامل</label>
-                  <input type="text" name="اسم ولي الأمر" class="form-input" placeholder="اسم الأب أو الأم أو الوصي">
+                  <label class="form-label" data-ar="اسم ولي الأمر الكامل" data-en="Guardian Full Name">اسم ولي الأمر الكامل</label>
+                  <input type="text" name="اسم ولي الأمر" class="form-input" placeholder="اسم الأب أو الأم أو الوصي" data-ar-placeholder="اسم الأب أو الأم أو الوصي" data-en-placeholder="Guardian full name">
                 </div>
                 <div class="form-group">
-                  <label class="form-label">رقم هاتف ولي الأمر</label>
-                  <input type="tel" name="هاتف ولي الأمر" class="form-input" placeholder="+212 6XX-XXXXXX" dir="ltr">
+                  <label class="form-label" data-ar="رقم هاتف ولي الأمر" data-en="Guardian Phone Number">رقم هاتف ولي الأمر</label>
+                  <input type="tel" name="هاتف ولي الأمر" class="form-input" placeholder="+212 6XX-XXXXXX" data-ar-placeholder="+212 6XX-XXXXXX" data-en-placeholder="+212 6XX-XXXXXX" dir="ltr">
                 </div>
               </div>
 
               <!-- الأنشطة -->
-              <div class="form-section-title">الأنشطة المطلوبة <span style="color:var(--crimson)">*</span></div>
+              <div class="form-section-title" id="activities-title">الأنشطة المطلوبة <span style="color:var(--crimson)">*</span></div>
               <div class="sport-checkboxes">
-                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="كراطي" id="c1"><label for="c1">🥋 كراطي</label></div>
-                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="تايكواندو" id="c2"><label for="c2">🦵 تايكواندو</label></div>
-                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="MMA" id="c3"><label for="c3">🥊 MMA</label></div>
-                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="كارديو (سيدات)" id="c4"><label for="c4">💃 كارديو (سيدات)</label></div>
-                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="روبوتيك" id="c5"><label for="c5">🤖 روبوتيك</label></div>
-                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="إعلاميات" id="c6"><label for="c6">💻 إعلاميات</label></div>
-                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="دعم — عربية" id="c7"><label for="c7">📚 دعم — عربية</label></div>
-                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="دعم — إنجليزية" id="c8"><label for="c8">🇬🇧 دعم — إنجليزية</label></div>
-                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="ثقافة وفنون" id="c9"><label for="c9">🎭 ثقافة وفنون</label></div>
-                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="أنشطة ترفيهية" id="c10"><label for="c10">🎉 أنشطة ترفيهية</label></div>
+                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="كراطي" id="c1"><label for="c1" data-ar="🥋 كراطي" data-en="🥋 Karate">🥋 كراطي</label></div>
+                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="تايكواندو" id="c2"><label for="c2" data-ar="🦵 تايكواندو" data-en="🦵 Taekwondo">🦵 تايكواندو</label></div>
+                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="MMA" id="c3"><label for="c3" data-ar="🥊 MMA" data-en="🥊 MMA">🥊 MMA</label></div>
+                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="كارديو (سيدات)" id="c4"><label for="c4" data-ar="💃 كارديو (سيدات)" data-en="💃 Ladies Cardio">💃 كارديو (سيدات)</label></div>
+                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="روبوتيك" id="c5"><label for="c5" data-ar="🤖 روبوتيك" data-en="🤖 Robotics">🤖 روبوتيك</label></div>
+                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="إعلاميات" id="c6"><label for="c6" data-ar="💻 إعلاميات" data-en="💻 Computer Science">💻 إعلاميات</label></div>
+                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="دعم — عربية" id="c7"><label for="c7" data-ar="📚 دعم — عربية" data-en="📚 Arabic Support">📚 دعم — عربية</label></div>
+                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="دعم — إنجليزية" id="c8"><label for="c8" data-ar="🇬🇧 دعم — إنجليزية" data-en="🇬🇧 English Support">🇬🇧 دعم — إنجليزية</label></div>
+                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="ثقافة وفنون" id="c9"><label for="c9" data-ar="🎭 ثقافة وفنون" data-en="🎭 Culture & Arts">🎭 ثقافة وفنون</label></div>
+                <div class="sport-check-item"><input type="checkbox" name="الأنشطة" value="أنشطة ترفيهية" id="c10"><label for="c10" data-ar="🎉 أنشطة ترفيهية" data-en="🎉 Recreational Activities">🎉 أنشطة ترفيهية</label></div>
               </div>
 
               <div class="form-group" style="margin-top:20px">
-                <label class="form-label">ملاحظات</label>
-                <input type="text" name="ملاحظات" class="form-input" placeholder="أي معلومة إضافية أو طلب خاص...">
+                <label class="form-label" data-ar="ملاحظات" data-en="Notes">ملاحظات</label>
+                <input type="text" name="ملاحظات" class="form-input" placeholder="أي معلومة إضافية أو طلب خاص..." data-ar-placeholder="أي معلومة إضافية أو طلب خاص..." data-en-placeholder="Any additional information or special request...">
               </div>
-              <button type="submit" class="btn-submit">إرسال طلب الانخراط ←</button>
+              <button type="submit" class="btn-submit" id="reg-submit-btn" data-ar="إرسال طلب الانخراط ←" data-en="Submit Registration Request ←">إرسال طلب الانخراط ←</button>
             </form>
           </div>
           <div class="form-success" id="reg-success">
@@ -667,9 +691,9 @@
   <section class="contact-section" style="padding-top:140px">
     <div class="section-inner">
       <div class="section-header reveal">
-        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">تواصل</span></div>
-        <h2 class="section-title">نحن <em>هنا</em> من أجلك</h2>
-        <p class="section-subtitle">لأي استفسار أو معلومة، لا تتردد في التواصل معنا.</p>
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text" id="con-eyebrow">تواصل</span></div>
+        <h2 class="section-title" id="con-title">نحن <em>هنا</em> من أجلك</h2>
+        <p class="section-subtitle" id="con-sub">لأي استفسار أو معلومة، لا تتردد في التواصل معنا.</p>
       </div>
       <div class="contact-grid">
         <div class="reveal">
@@ -677,28 +701,28 @@
             <div class="contact-detail">
               <div class="contact-detail-icon">📍</div>
               <div class="contact-detail-content">
-                <h4>العنوان</h4>
-                <p>دار الشباب المنزه<br>بساتين المنزه، الرباط — المغرب</p>
+                <h4 data-ar="العنوان" data-en="Address">العنوان</h4>
+                <p data-ar="دار الشباب المنزه<br>بساتين المنزه، الرباط — المغرب" data-en="Menzah Youth House<br>Bassatine Menzah, Rabat — Morocco">دار الشباب المنزه<br>بساتين المنزه، الرباط — المغرب</p>
               </div>
             </div>
             <div class="contact-detail">
               <div class="contact-detail-icon">📞</div>
               <div class="contact-detail-content">
-                <h4>الهاتف</h4>
+                <h4 data-ar="الهاتف" data-en="Phone">الهاتف</h4>
                 <p>+212 6XX-XXXXXX</p>
               </div>
             </div>
             <div class="contact-detail">
               <div class="contact-detail-icon">✉️</div>
               <div class="contact-detail-content">
-                <h4>البريد الإلكتروني</h4>
+                <h4 data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</h4>
                 <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7a1915140e1b190e3a171f14001b1257101f0f141f09091f54171b">[email&#160;protected]</a></p>
               </div>
             </div>
             <div class="contact-detail">
               <div class="contact-detail-icon">⏰</div>
               <div class="contact-detail-content">
-                <h4>ساعات الاستقبال</h4>
+                <h4 data-ar="ساعات الاستقبال" data-en="Opening Hours">ساعات الاستقبال</h4>
                 <p id="con-hours">على مدى الأسبوع: 16:00 – 19:00</p>
               </div>
             </div>
@@ -711,7 +735,7 @@
           </div>
           <div class="contact-map-placeholder">
             <span>📍</span>
-            <p>دار الشباب المنزه، بساتين المنزه<br><small style="opacity:0.6">الرباط، المغرب</small></p>
+            <p data-ar="دار الشباب المنزه، بساتين المنزه<br><small style=\"opacity:0.6\">الرباط، المغرب</small>" data-en="Menzah Youth House, Bassatine Menzah<br><small style=\"opacity:0.6\">Rabat, Morocco</small>">دار الشباب المنزه، بساتين المنزه<br><small style="opacity:0.6">الرباط، المغرب</small></p>
           </div>
         </div>
         <div class="reveal">
@@ -722,20 +746,20 @@
               <input type="hidden" name="subject" value="رسالة جديدة — جمعية شباب المنزه">
               <input type="hidden" name="from_name" value="موقع جمعية شباب المنزه">
               <input type="hidden" name="botcheck" value="" style="display:none">
-              <div class="form-group"><label class="form-label">الاسم الكامل</label><input type="text" name="الاسم" class="form-input" placeholder="اسمك الكامل" required></div>
-              <div class="form-group"><label class="form-label">الهاتف</label><input type="tel" name="الهاتف" class="form-input" placeholder="+212 6XX-XXXXXX" dir="ltr"></div>
+              <div class="form-group"><label class="form-label" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label><input type="text" name="الاسم" class="form-input" placeholder="اسمك الكامل" data-ar-placeholder="اسمك الكامل" data-en-placeholder="Your full name" required></div>
+              <div class="form-group"><label class="form-label" data-ar="الهاتف" data-en="Phone">الهاتف</label><input type="tel" name="الهاتف" class="form-input" placeholder="+212 6XX-XXXXXX" data-ar-placeholder="+212 6XX-XXXXXX" data-en-placeholder="+212 6XX-XXXXXX" dir="ltr"></div>
               <div class="form-group">
-                <label class="form-label">الموضوع</label>
+                <label class="form-label" data-ar="الموضوع" data-en="Subject">الموضوع</label>
                 <select name="الموضوع" class="form-input form-select">
-                  <option value="">اختر موضوع رسالتك</option>
-                  <option>معلومات عن الانخراط</option>
-                  <option>أسئلة عن البرامج</option>
-                  <option>شراكة أو تعاون</option>
-                  <option>أخرى</option>
+                  <option value="" data-ar="اختر موضوع رسالتك" data-en="Choose your message subject">اختر موضوع رسالتك</option>
+                  <option data-ar="معلومات عن الانخراط" data-en="Registration information">معلومات عن الانخراط</option>
+                  <option data-ar="أسئلة عن البرامج" data-en="Questions about programs">أسئلة عن البرامج</option>
+                  <option data-ar="شراكة أو تعاون" data-en="Partnership or collaboration">شراكة أو تعاون</option>
+                  <option data-ar="أخرى" data-en="Other">أخرى</option>
                 </select>
               </div>
-              <div class="form-group"><label class="form-label">رسالتك</label><textarea name="الرسالة" class="form-input" rows="5" placeholder="اكتب رسالتك هنا..." required></textarea></div>
-              <button type="submit" class="btn-submit">إرسال الرسالة ←</button>
+              <div class="form-group"><label class="form-label" data-ar="رسالتك" data-en="Your Message">رسالتك</label><textarea name="الرسالة" class="form-input" rows="5" placeholder="اكتب رسالتك هنا..." data-ar-placeholder="اكتب رسالتك هنا..." data-en-placeholder="Write your message here..." required></textarea></div>
+              <button type="submit" class="btn-submit" id="con-send-btn">إرسال الرسالة ←</button>
             </form>
           </div>
         </div>
@@ -749,9 +773,9 @@
   <section style="padding-top:140px">
     <div class="section-inner">
       <div class="section-header reveal">
-        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text">الشركاء</span></div>
-        <h2 class="section-title">شركاؤنا في <em>المسيرة</em></h2>
-        <p class="section-subtitle">نشكر كل الجهات والأفراد الذين يدعمون مسيرة جمعية شباب المنزه.</p>
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span class="section-eyebrow-text" id="partners-eyebrow">الشركاء</span></div>
+        <h2 class="section-title" id="partners-title">شركاؤنا في <em>المسيرة</em></h2>
+        <p class="section-subtitle" id="partners-sub">نشكر كل الجهات والأفراد الذين يدعمون مسيرة جمعية شباب المنزه.</p>
       </div>
 
       <!-- Partner Cards Grid -->
@@ -761,15 +785,15 @@
           <div class="partner-logo-wrap">
             <div class="partner-logo-placeholder">🏛️</div>
           </div>
-          <div class="partner-name">دار الشباب المنزه</div>
-          <div class="partner-type">شريك مؤسسي</div>
-          <p class="partner-desc">تحتضن دار الشباب المنزه أنشطتنا وتوفر لنا الفضاء المناسب لخدمة الشباب.</p>
+          <div class="partner-name" data-ar="دار الشباب المنزه" data-en="Menzah Youth House">دار الشباب المنزه</div>
+          <div class="partner-type" data-ar="شريك مؤسسي" data-en="Founding Partner">شريك مؤسسي</div>
+          <p class="partner-desc" data-ar="تحتضن دار الشباب المنزه أنشطتنا وتوفر لنا الفضاء المناسب لخدمة الشباب." data-en="The Menzah Youth House hosts our activities and provides the right space to serve youth.">تحتضن دار الشباب المنزه أنشطتنا وتوفر لنا الفضاء المناسب لخدمة الشباب.</p>
         </div>
         <div class="partner-card partner-card-add" onclick="openPartnerModal()">
           <div class="partner-add-icon">＋</div>
-          <div class="partner-add-text">إضافة شريك</div>
-          <p class="partner-add-sub">هل أنتم مهتمون بالشراكة معنا؟ تواصلوا معنا</p>
-          <button class="btn-partner-contact" onclick="showPage('contact');event.stopPropagation()">تواصل معنا</button>
+          <div class="partner-add-text" data-ar="إضافة شريك" data-en="Add a Partner">إضافة شريك</div>
+          <p class="partner-add-sub" data-ar="هل أنتم مهتمون بالشراكة معنا؟ تواصلوا معنا" data-en="Interested in partnering with us? Reach out.">هل أنتم مهتمون بالشراكة معنا؟ تواصلوا معنا</p>
+          <button class="btn-partner-contact" onclick="showPage('contact');event.stopPropagation()" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</button>
         </div>
       </div>
 
@@ -777,12 +801,12 @@
       <div class="partner-cta reveal">
         <div class="partner-cta-inner">
           <div class="partner-cta-text">
-            <h3>هل تريد أن تكون شريكاً؟</h3>
-            <p>نرحب بالشراكات مع المؤسسات التعليمية، الجمعيات، الشركات، والأفراد الراغبين في دعم الشباب.</p>
+            <h3 data-ar="هل تريد أن تكون شريكاً؟" data-en="Want to become a partner?">هل تريد أن تكون شريكاً؟</h3>
+            <p data-ar="نرحب بالشراكات مع المؤسسات التعليمية، الجمعيات، الشركات، والأفراد الراغبين في دعم الشباب." data-en="We welcome partnerships with educational institutions, associations, companies, and individuals who want to support youth.">نرحب بالشراكات مع المؤسسات التعليمية، الجمعيات، الشركات، والأفراد الراغبين في دعم الشباب.</p>
           </div>
           <div class="partner-cta-actions">
-            <button class="btn-submit" style="width:auto;padding:14px 32px" onclick="showPage('contact')">راسلنا الآن</button>
-            <a href="https://wa.me/212650188600" class="whatsapp-btn" style="width:auto;padding:14px 24px" target="_blank">
+            <button class="btn-submit" style="width:auto;padding:14px 32px" onclick="showPage('contact')" data-ar="راسلنا الآن" data-en="Message Us Now">راسلنا الآن</button>
+            <a href="https://wa.me/212650188600" class="whatsapp-btn" style="width:auto;padding:14px 24px" target="_blank" data-ar="واتساب" data-en="WhatsApp">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               واتساب
             </a>
@@ -799,43 +823,57 @@
     <div class="footer-top">
       <div class="footer-brand">
         <img src="Menzeh_new_2.png" alt="Menzah" onerror="this.style.display='none'">
-        <div class="footer-brand-name">جمعية شباب المنزه</div>
-        <p>للرياضة والثقافة — نبني أجيالاً واثقة ومتوازنة في دار الشباب المنزه، بساتين المنزه، الرباط.</p>
+        <div class="footer-brand-name" data-ar="جمعية شباب المنزه" data-en="Menzah Youth Association">جمعية شباب المنزه</div>
+        <p data-ar="للرياضة والثقافة — نبني أجيالاً واثقة ومتوازنة في دار الشباب المنزه، بساتين المنزه، الرباط." data-en="For sports and culture — we build confident, balanced generations at Menzah Youth House, Bassatine Menzah, Rabat.">للرياضة والثقافة — نبني أجيالاً واثقة ومتوازنة في دار الشباب المنزه، بساتين المنزه، الرباط.</p>
+        <div class="footer-social">
+          <a href="#" id="social-facebook" class="social-icon" target="_blank" title="Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" id="social-instagram" class="social-icon" target="_blank" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" id="social-tiktok" class="social-icon" target="_blank" title="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
+          </a>
+          <a href="https://wa.me/212650188600" class="social-icon social-whatsapp" target="_blank" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
       </div>
       <div class="footer-col">
-        <h4>روابط</h4>
+        <h4 data-ar="روابط" data-en="Links">روابط</h4>
         <ul>
-          <li><a onclick="showPage('home')">الرئيسية</a></li>
-          <li><a onclick="showPage('about')">عن الجمعية</a></li>
-          <li><a onclick="showPage('programs')">البرامج</a></li>
-          <li><a onclick="showPage('schedule')">البرنامج الأسبوعي</a></li>
-          <li><a onclick="showPage('team')">الفريق</a></li>
-          <li><a onclick="showPage('partners')">الشركاء</a></li>
+          <li><a onclick="showPage('home')" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+          <li><a onclick="showPage('about')" data-ar="عن الجمعية" data-en="About">عن الجمعية</a></li>
+          <li><a onclick="showPage('programs')" data-ar="البرامج" data-en="Programs">البرامج</a></li>
+          <li><a onclick="showPage('schedule')" data-ar="البرنامج الأسبوعي" data-en="Weekly Schedule">البرنامج الأسبوعي</a></li>
+          <li><a onclick="showPage('team')" data-ar="الفريق" data-en="Team">الفريق</a></li>
+          <li><a onclick="showPage('partners')" data-ar="الشركاء" data-en="Partners">الشركاء</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>البرامج</h4>
+        <h4 data-ar="البرامج" data-en="Programs">البرامج</h4>
         <ul>
-          <li><a onclick="showPage('programs')">كراطي · تايكواندو · MMA</a></li>
-          <li><a onclick="showPage('programs')">كارديو للسيدات</a></li>
-          <li><a onclick="showPage('programs')">روبوتيك وإعلاميات</a></li>
-          <li><a onclick="showPage('programs')">دروس الدعم</a></li>
-          <li><a onclick="showPage('programs')">الثقافة والفنون</a></li>
+          <li><a onclick="showPage('programs')" data-ar="كراطي · تايكواندو · MMA" data-en="Karate · Taekwondo · MMA">كراطي · تايكواندو · MMA</a></li>
+          <li><a onclick="showPage('programs')" data-ar="كارديو للسيدات" data-en="Ladies Cardio">كارديو للسيدات</a></li>
+          <li><a onclick="showPage('programs')" data-ar="روبوتيك وإعلاميات" data-en="Robotics & IT">روبوتيك وإعلاميات</a></li>
+          <li><a onclick="showPage('programs')" data-ar="دروس الدعم" data-en="Support Classes">دروس الدعم</a></li>
+          <li><a onclick="showPage('programs')" data-ar="الثقافة والفنون" data-en="Culture & Arts">الثقافة والفنون</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>تواصل</h4>
+        <h4 data-ar="تواصل" data-en="Contact">تواصل</h4>
         <ul>
-          <li><a>📍 دار الشباب المنزه، الرباط</a></li>
-          <li><a href="https://wa.me/212650188600" target="_blank">💬 واتساب</a></li>
-          <li><a onclick="showPage('donate')">💚 تبرع</a></li>
-          <li><a onclick="showPage('register')">📝 انخرط الآن</a></li>
+          <li><a data-ar="📍 دار الشباب المنزه، الرباط" data-en="📍 Menzah Youth House, Rabat">📍 دار الشباب المنزه، الرباط</a></li>
+          <li><a href="https://wa.me/212650188600" target="_blank" data-ar="💬 واتساب" data-en="💬 WhatsApp">💬 واتساب</a></li>
+          <li><a onclick="showPage('donate')" data-ar="💚 تبرع" data-en="💚 Donate">💚 تبرع</a></li>
+          <li><a onclick="showPage('register')" data-ar="📝 انخرط الآن" data-en="📝 Register Now">📝 انخرط الآن</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 جمعية شباب المنزه للرياضة والثقافة — <span class="footer-gold">الرباط، المغرب</span></p>
-      <p>صُنع بشغف وابتكار</p>
+      <p><span data-ar="© 2025 جمعية شباب المنزه للرياضة والثقافة — " data-en="© 2025 Menzah Youth Association for Sports and Culture — ">© 2025 جمعية شباب المنزه للرياضة والثقافة — </span><span class="footer-gold" data-ar="الرباط، المغرب" data-en="Rabat, Morocco">الرباط، المغرب</span></p>
+      <p data-ar="صُنع بشغف وابتكار" data-en="Made with passion and innovation">صُنع بشغف وابتكار</p>
     </div>
   </div>
 </footer>

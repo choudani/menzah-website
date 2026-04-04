@@ -256,6 +256,19 @@ const T = {
     'con-wa-btn':'تواصل معنا عبر واتساب',
     'con-form-title':'راسلنا مباشرة',
     'con-send-btn':'إرسال الرسالة ←',
+    /* Team members */
+    'tm1-name':'عبدالإله المنصوري','tm1-role':'مدرب الفنون القتالية',
+    'tm1-bio':'مدرب معتمد في الكراطي والتايكواندو والـ MMA، يسهر على تكوين الرياضيين وتطوير مستواهم.',
+    'tm2-name':'محمد الشوداني','tm2-role':'مدرس الإعلاميات والروبوتيك',
+    'tm2-bio':'مختص في البرمجة والروبوتيك، يعلّم الأطفال والشباب أسرار التكنولوجيا بأسلوب ممتع وتطبيقي.',
+    'tm3-name':'حليمة الشوداني','tm3-role':'مدرسة اللغة العربية',
+    'tm3-bio':'أستاذة متخصصة في تدريس اللغة العربية وتقوية المستوى الدراسي للتلاميذ.',
+    'tm4-name':'السيدة خولة','tm4-role':'مدرسة اللغة الإنجليزية',
+    'tm4-bio':'متخصصة في تعليم اللغة الإنجليزية، تساعد التلاميذ على اكتساب مهارات التواصل والتفوق الدراسي.',
+    'tm5-name':'سعيد الجوهري','tm5-role':'منشط ترفيهي',
+    'tm5-bio':'منشط متمرس يخلق أجواءً مرحة وتفاعلية في الأنشطة الترفيهية والرحلات والمهرجانات.',
+    'tm6-name':'محمد المنصوري','tm6-role':'منشط ثقافي',
+    'tm6-bio':'مسؤول الأنشطة الثقافية والفنية، يسهر على إغناء البرنامج الثقافي للجمعية وتنمية مواهب الشباب.',
   },
   en: {
     /* Nav */
@@ -310,25 +323,58 @@ const T = {
     'con-wa-btn':'Contact us via WhatsApp',
     'con-form-title':'Message Us Directly',
     'con-send-btn':'Send Message ←',
+    /* Team members */
+    'tm1-name':'Abdelilah El Mansouri','tm1-role':'Martial Arts Coach',
+    'tm1-bio':'Certified coach in Karate, Taekwondo and MMA, dedicated to training athletes and developing their skills.',
+    'tm2-name':'Mohamed Choudani','tm2-role':'IT & Robotics Instructor',
+    'tm2-bio':'Specialist in programming and robotics, teaching children and youth the secrets of technology in a fun, hands-on way.',
+    'tm3-name':'Halima Choudani','tm3-role':'Arabic Language Teacher',
+    'tm3-bio':'Specialized teacher in Arabic language instruction, helping students strengthen their academic level.',
+    'tm4-name':'Mrs. Khoula','tm4-role':'English Language Teacher',
+    'tm4-bio':'Specialist in English language teaching, helping students develop communication skills and academic excellence.',
+    'tm5-name':'Said El Jouhari','tm5-role':'Recreation Coordinator',
+    'tm5-bio':'Experienced coordinator who creates fun and interactive atmospheres in recreational activities, trips and festivals.',
+    'tm6-name':'Mohamed El Mansouri','tm6-role':'Cultural Coordinator',
+    'tm6-bio':'Responsible for cultural and artistic activities, enriching the cultural program and nurturing youth talents.',
   }
 };
 
+function translateAttributes(lang) {
+  const attrPairs = [
+    ['data-ar', 'data-en', 'textContent'],
+    ['data-ar-placeholder', 'data-en-placeholder', 'placeholder'],
+    ['data-ar-title', 'data-en-title', 'title'],
+    ['data-ar-alt', 'data-en-alt', 'alt']
+  ];
+  attrPairs.forEach(([ar, en, prop]) => {
+    document.querySelectorAll('[' + ar + ']').forEach(el => {
+      const value = lang === 'ar' ? el.getAttribute(ar) : (el.getAttribute(en) || el.getAttribute(ar));
+      if (value !== null) {
+        el[prop] = value;
+      }
+    });
+  });
+}
+
 function setLang(lang, btn) {
+  const button = btn || document.querySelector(`.lang-btn[data-lang="${lang}"]`);
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+  if (button) button.classList.add('active');
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.documentElement.lang = lang;
   const t = T[lang] || T.ar;
-  // Translate all registered IDs
   Object.keys(t).forEach(id => {
     const el = document.getElementById(id);
     if (el) el.textContent = t[id];
   });
-  // Translate data-ar / data-en elements
-  document.querySelectorAll('[data-ar]').forEach(el => {
-    el.textContent = lang === 'ar' ? el.dataset.ar : (el.dataset.en || el.dataset.ar);
-  });
+  translateAttributes(lang);
+  localStorage.setItem('siteLang', lang);
 }
+
+(function() {
+  const storedLang = localStorage.getItem('siteLang') || 'ar';
+  setLang(storedLang);
+})();
 
 /* ─── HERO IMAGE SLIDER ─── */
 (function() {
